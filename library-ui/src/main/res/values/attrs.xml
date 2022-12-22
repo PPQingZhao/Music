@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IndicatorView">
+        <attr name="indicatorSelectedColor" format="color" />
+        <attr name="indicatorNormalColor" format="color" />
+    </declare-styleable>
+
+    <!--用于适应主题 drawable tint-->
+    <attr name="themeTint" format="color" />
+    <attr name="dividerColor" format="color" />
+
+    <declare-styleable name="StateView">
+        <attr name="loading_layout_id" format="reference" />
+        <attr name="error_layout_id" format="reference" />
+        <attr name="empty_layout_id" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableTextLayout">
+        <attr name="android:maxLines" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:ellipsize" />
+        <attr name="android:text" />
+        <attr name="expandText" format="reference|string" />
+        <attr name="closeText" format="reference|string" />
+        <attr name="expandedTextColor" format="reference|color" />
+        <attr name="expandedTextSize" format="dimension" />
+        <attr name="expand" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="VideoViewer">
+        <attr name="surface_type" />
+        <attr name="controller_layout_id" />
+        <attr name="hide_on_touch" />
+        <attr name="auto_show" />
+        <attr name="show_timeout" />
+        <attr name="use_controller" />
+        <attr name="use_bottom_timeBar" format="boolean" />
+        <!--cover scaleType-->
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+</resources>

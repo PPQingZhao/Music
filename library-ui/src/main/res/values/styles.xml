@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StyleItemVideo">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="surface_type">texture_view</item>
+        <item name="show_timeout">36000000</item>
+        <item name="hide_on_touch">false</item>
+        <item name="use_controller">false</item>
+    </style>
+
+
+</resources>

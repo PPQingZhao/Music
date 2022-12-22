@@ -1,0 +1,155 @@
+ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=_V1MTc4MjA0NjA0NjE6MTY5OTQwOTczMjg3OTpkODlhM2YyNDg4YTc5YmYxMmE2MGZhMWFhNTkwMmY0Yg;APPID=ahpagrcrf2p7m6rg;PHPSESSID=8f8b620660cbe50926f46afe4fd46703
+ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=_V1MTc4MjA0NjA0NjE6MTY5OTQwOTczMjg3OTpkODlhM2YyNDg4YTc5YmYxMmE2MGZhMWFhNTkwMmY0Yg;APPID=ahpagrcrf2p7m6rg;PHPSESSID=8f8b620660cbe50926f46afe4fd46703
+X-THEFAIR-AUTH: Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3meOP+5kc/kBuLz/tum4/2miAz7hWrc9BWcqMk+zkk2lIiiJe7U9jlP2IHzBBsUoLAA5QTQ==
+
+
+
+Hypertext Transfer Protocol
+    POST /v1/card/page/get_page HTTP/1.1\r\n
+    Connection: keep-alive\r\n
+    x-api-key: 0530ee4341324ce2b26c23fcece80ea2\r\n
+    User-Agent: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    X-THEFAIR-APPID: ahpagrcrf2p7m6rg\r\n
+     [truncated]X-THEFAIR-AUTH: Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3me
+    X-THEFAIR-CID: 2248c7390ffd3039d84a554301e0fd73\r\n
+    X-THEFAIR-UA: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    Cookie: ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=;PHPSESSID=e8180327250e3f75dcde695d089b36aa;APPID=ahpagrcrf2p7m6rg\r\n
+    Content-Type: application/x-www-form-urlencoded\r\n
+    Content-Length: 203\r\n
+    Host: api.eyepetizer.net\r\n
+    Accept-Encoding: gzip\r\n
+    \r\n
+    [Full request URI: http://api.eyepetizer.net/v1/card/page/get_page]
+    [HTTP request 1/1]
+    [Response in frame: 853]
+    File Data: 203 bytes
+
+
+{
+	"x-api-key": "0530ee4341324ce2b26c23fcece80ea2",
+	"User-Agent": "EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0",
+	"X-THEFAIR-APPID": "ahpagrcrf2p7m6rg",
+	"X-THEFAIR-AUTH": "Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3meOP+5kc/kBuLz/tum4/2miAz7hbkaQ0MN+5j3PLrwsIXL51HmNQ1QI4rk2W4MDi5GL7jQ==",
+	"X-THEFAIR-CID": "2248c7390ffd3039d84a554301e0fd73",
+	"X-THEFAIR-UA": "EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0",
+	"Cookie": "ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=;PHPSESSID=83ce5646caf556a20e2b7f076d997eec;APPID=ahpagrcrf2p7m6rg",
+	"Host": "api.eyepetizer.net"
+}
+
+{
+     "udid" = "074347ace25d41df856528937c4a3804eb4fea22",
+     "vc" = "7051610",
+    "vn" = "7.5.161",
+    "deviceModel" = "ELS-AN00",
+     "first_channel" = "huawei",
+     "size" = "1200X2499",
+     "system_version_code" = "29",
+     "token" = "43f18a526760c43d",
+     "page_type" = "card",
+     "page_label" = "follow"
+}
+
+
+详情
+Hypertext Transfer Protocol
+     [truncated]GET /v1/content/item/get_item_detail_v2?resource_id=314443&resource_type=pgc_video&udid=074347ace25d41df856528937c4a3804eb4fea22&vc=7051610&vn=7.5.161&deviceModel=ELS-AN00&size=1200X2499&first_channel=huawei&last_channel=huawe
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n
+    Connection: keep-alive\r\n
+    x-api-key: 0530ee4341324ce2b26c23fcece80ea2\r\n
+    User-Agent: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    X-THEFAIR-APPID: ahpagrcrf2p7m6rg\r\n
+     [truncated]X-THEFAIR-AUTH: Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3me
+    X-THEFAIR-CID: 2248c7390ffd3039d84a554301e0fd73\r\n
+    X-THEFAIR-UA: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    Cookie: ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=;APPID=ahpagrcrf2p7m6rg;PHPSESSID=70ca51458f6b55bc8f4de98a9a73d9ba\r\n
+    Host: api.eyepetizer.net\r\n
+    Accept-Encoding: gzip\r\n
+    \r\n
+    [Full request URI [truncated]: http://api.eyepetizer.net/v1/content/item/get_item_detail_v2?resource_id=314443&resource_type=pgc_video&udid=074347ace25d41df856528937c4a3804eb4fea22&vc=7051610&vn=7.5.161&deviceModel=ELS-AN00&size=1200X2499&]
+    [HTTP request 1/3]
+    [Response in frame: 54]
+    [Next request in frame: 118]
+
+详情简介--相关推荐
+Hypertext Transfer Protocol
+    POST c HTTP/1.1\r\n
+    Connection: keep-alive\r\n
+    x-api-key: 0530ee4341324ce2b26c23fcece80ea2\r\n
+    User-Agent: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    X-THEFAIR-APPID: ahpagrcrf2p7m6rg\r\n
+     [truncated]X-THEFAIR-AUTH: Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3me
+    X-THEFAIR-CID: 2248c7390ffd3039d84a554301e0fd73\r\n
+    X-THEFAIR-UA: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    Cookie: ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=;APPID=ahpagrcrf2p7m6rg;PHPSESSID=68f3d427f1b45aaffb45650d03ba2b27\r\n
+    Content-Type: application/x-www-form-urlencoded\r\n
+    Content-Length: 213\r\n
+    Host: api.eyepetizer.net\r\n
+    Accept-Encoding: gzip\r\n
+    \r\n
+    [Full request URI: http://api.eyepetizer.net/v1/content/item/get_related_recommend]
+    [HTTP request 3/3]
+    [Prev request in frame: 56]
+    [Response in frame: 699]
+    File Data: 213 bytes
+http://api.eyepetizer.net/v1/item/comment/get_cms_comment_list
+
+HTML Form URL Encoded: application/x-www-form-urlencoded
+    Form item: "udid" = "074347ace25d41df856528937c4a3804eb4fea22"
+    Form item: "vc" = "7051610"
+    Form item: "vn" = "7.5.161"
+    Form item: "deviceModel" = "ELS-AN00"
+    Form item: "first_channel" = "huawei"
+    Form item: "size" = "1200X2499"
+    Form item: "system_version_code" = "29"
+    Form item: "token" = "43f18a526760c43d"
+    Form item: "resource_id" = "314057"
+    Form item: "resource_type" = "pgc_video"
+
+
+评论
+Hypertext Transfer Protocol
+    POST /v1/item/comment/get_cms_comment_list HTTP/1.1\r\n
+    Connection: keep-alive\r\n
+    x-api-key: 0530ee4341324ce2b26c23fcece80ea2\r\n
+    User-Agent: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    X-THEFAIR-APPID: ahpagrcrf2p7m6rg\r\n
+     [truncated]X-THEFAIR-AUTH: Ee17OewjhONMFg7wu3+DMjYJ0+7BnnkF6VmMpTPvIUPmdBFN1esyXOPChQuxOgeeYU9Xg1w65fTNRjaSFCef7L11uxUVeN+sVTltut5ZRrkpgcYq7NXODEs/QObe36cdpCK/q6VgJmyngs5L2mQq/RNGsAjAY881y64hHnW9ZQ9kgNZOm01QqwbaptVqSAe9PQojEoUiiFCK0Hf3me
+    X-THEFAIR-CID: 2248c7390ffd3039d84a554301e0fd73\r\n
+    X-THEFAIR-UA: EYEPETIZER/7051610 (ELS-AN00;android;10;zh_CN_#Hans;android;7.5.161;cn-bj;huawei;2248c7390ffd3039d84a554301e0fd73;WIFI;1200*2499) native/1.0\r\n
+    Cookie: ky_udid=074347ace25d41df856528937c4a3804eb4fea22;ky_auth=;APPID=ahpagrcrf2p7m6rg;PHPSESSID=68f3d427f1b45aaffb45650d03ba2b27\r\n
+    Content-Type: application/x-www-form-urlencoded\r\n
+    Content-Length: 227\r\n
+    Host: api.eyepetizer.net\r\n
+    Accept-Encoding: gzip\r\n
+    \r\n
+    [Full request URI: http://api.eyepetizer.net/v1/item/comment/get_cms_comment_list]
+    [HTTP request 1/1]
+    [Response in frame: 164]
+    File Data: 227 bytes
+HTML Form URL Encoded: application/x-www-form-urlencoded
+    Form item: "udid" = "074347ace25d41df856528937c4a3804eb4fea22"
+    Form item: "vc" = "7051610"
+    Form item: "vn" = "7.5.161"
+    Form item: "deviceModel" = "ELS-AN00"
+    Form item: "first_channel" = "huawei"
+    Form item: "size" = "1200X2499"
+    Form item: "system_version_code" = "29"
+    Form item: "token" = "43f18a526760c43d"
+    Form item: "resource_id" = "314057"
+    Form item: "resource_type" = "pgc_video"
+    Form item: "sort_type" = "hot"
+
+    HTML Form URL Encoded: application/x-www-form-urlencoded
+        Form item: "udid" = "074347ace25d41df856528937c4a3804eb4fea22"
+        Form item: "vc" = "7051610"
+        Form item: "vn" = "7.5.161"
+        Form item: "deviceModel" = "ELS-AN00"
+        Form item: "first_channel" = "huawei"
+        Form item: "size" = "1200X2499"
+        Form item: "system_version_code" = "29"
+        Form item: "token" = "43f18a526760c43d"
+        Form item: "resource_id" = "12222"
+        Form item: "resource_type" = "pgc_video"
+        Form item: "last_item_id" = "4"
+        Form item: "sort_type" = "hot"
+

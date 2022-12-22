@@ -44,12 +44,8 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(projects.moduleMain)
+    if ("com.android.library" == libs.plugins.android.module.get().pluginId) {
+        implementation(projects.moduleUser)
+    }
 }

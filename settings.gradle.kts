@@ -30,14 +30,15 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "Music"
 
 include(
-        ":app",
-//        ":library-mvvm",
-//        ":library-base",
-//        ":library-ui",
-//        ":library-router-service",
-//        ":library-network",
-//        ":library-common",
-//        ":library-database",
-//        ":library-theme",
-//        ":module-main",
+    ":app",
+    ":library-mvvm",
+    ":library-base",
+    ":library-ui",
+    ":library-router-service",
+    ":library-network",
+    ":library-common",
+    ":library-database",
+    ":library-theme",
+    ":module-main",
+    ":module-user"
 )
