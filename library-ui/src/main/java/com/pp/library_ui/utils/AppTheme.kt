@@ -27,7 +27,7 @@ class AppTheme : Theme {
 
         val attrMap = mapOf(
             themeTint to com.pp.library_ui.R.attr.themeTint,
-            windowBackground to R.attr.windowBackground,
+//            windowBackground to R.attr.windowBackground,
             colorPrimary to R.attr.colorPrimary,
             colorAccent to R.attr.colorAccent,
             textColor to R.attr.textColor,

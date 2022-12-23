@@ -61,7 +61,6 @@ abstract class LifecycleActivity<VB : ViewDataBinding, VM : LifecycleViewModel> 
             return
 
         setTranslucent()
-        requireLightStatusBar(true)
         /*
             windowInsets分发:拦截WindowInsets, 将windowInsets分发给每个fragment
             沉浸式状态栏: window flags = LayoutParams.FLAG_TRANSLUCENT_STATUS 配合布局中 android:fitsSystemWindows="true"进行实现

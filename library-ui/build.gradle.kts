@@ -52,6 +52,7 @@ dependencies {
 
     implementation(projects.libraryTheme)
     api(libs.exoplayer)
+    api(libs.constraintlayout)
 //    api(libs.swiperefreshlayout)
 //    api(libs.photoView)
 

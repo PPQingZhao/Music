@@ -4,8 +4,8 @@ minSdk = "21"
 targetSdk = "31"
 versionCode = "1"
 versionName = "1.0.0"
-androidGradlePlugin = "7.3.0-rc01"
-kotlin = "1.7.10"
+androidGradlePlugin = "7.4.0-rc01"
+kotlin = "1.7.21"
 #######################################################################################################
 [libraries]
 # test
