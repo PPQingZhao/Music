@@ -76,9 +76,32 @@
 
     </style>
 
-    <style name="Theme.Splash" parent="AppTheme">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowBackground">@drawable/splash</item>
+    <style name="Theme.Blue" parent="AppTheme">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blueColorPrimary</item>
+        <item name="colorPrimaryVariant">@color/blueColorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/blueColorOnPrimary</item>
+        <item name="colorAccent">@color/blueColorAccent</item>
+        <item name="colorControlHighlight">@color/blueColorControlHighlight</item>
+        <item name="colorControlNormal">@color/blueColorControlNormal</item>
+        <item name="android:textColor">@color/blueTextColor</item>
+        <item name="hintTextColor">@color/blueHintTextColor</item>
+        <item name="android:textColorSecondary">@color/blueTextColorSecondary</item>
+        <item name="android:editTextColor">@color/blueEditTextColor</item>
+        <item name="android:textColorHint">@color/blueHintTextColor</item>
+        <item name="themeTint">@color/blueDrawableTint</item>
+        <item name="dividerColor">@color/blueDividerColor</item>
+        <item name="indicatorNormalColor">@color/blueIndicatorNormalColor</item>
+        <item name="indicatorSelectedColor">@color/blueIndicatorSelectedColor</item>
+        <item name="android:progressTint">@color/blueProgressTint</item>
+        <item name="android:secondaryProgressTint">@color/blueSecondaryProgressTint</item>
+
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@color/blueColorWindowBackground</item>
+
     </style>
 
 </resources>

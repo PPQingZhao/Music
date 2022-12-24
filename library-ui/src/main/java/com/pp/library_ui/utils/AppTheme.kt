@@ -2,32 +2,34 @@ package com.pp.library_ui.utils
 
 import android.R
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.content.res.Resources
-import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.MutableLiveData
 
 class AppTheme : Theme {
 
-    val windowBackground = MutableLiveData<Int>()
-    val colorPrimary = MutableLiveData<Int>()
-    val colorAccent = MutableLiveData<Int>()
-    val textColor = MutableLiveData<Int>()
-    val textColorSecondary = MutableLiveData<Int>()
-    val textColorHint = MutableLiveData<Int>()
-    val editTextColor = MutableLiveData<Int>()
-    val themeTint = MutableLiveData<Int>()
-    val indicatorNormalColor = MutableLiveData<Int>()
-    val indicatorSelectedColor = MutableLiveData<Int>()
-    val dividerColor = MutableLiveData<Int>()
-    val progressTint = MutableLiveData<Int>()
-    val secondaryProgressTint = MutableLiveData<Int>()
+    val windowBackground = MutableLiveData<Drawable?>()
+    val colorPrimary = MutableLiveData<ColorStateList>()
+    val colorAccent = MutableLiveData<ColorStateList>()
+    val textColor = MutableLiveData<ColorStateList>()
+    val textColorSecondary = MutableLiveData<ColorStateList>()
+    val textColorHint = MutableLiveData<ColorStateList>()
+    val editTextColor = MutableLiveData<ColorStateList>()
+    val themeTint = MutableLiveData<ColorStateList>()
+    val indicatorNormalColor = MutableLiveData<ColorStateList>()
+    val indicatorSelectedColor = MutableLiveData<ColorStateList>()
+    val dividerColor = MutableLiveData<ColorStateList>()
+    val progressTint = MutableLiveData<ColorStateList>()
+    val secondaryProgressTint = MutableLiveData<ColorStateList>()
 
     @SuppressLint("ResourceType", "Recycle")
     override fun setTheme(theme: Resources.Theme) {
 
-        val attrMap = mapOf(
+        val drawableAttrMap = mapOf(windowBackground to R.attr.windowBackground)
+
+        val colorAttrMap = mapOf(
             themeTint to com.pp.library_ui.R.attr.themeTint,
-//            windowBackground to R.attr.windowBackground,
             colorPrimary to R.attr.colorPrimary,
             colorAccent to R.attr.colorAccent,
             textColor to R.attr.textColor,
@@ -41,15 +43,30 @@ class AppTheme : Theme {
             secondaryProgressTint to R.attr.secondaryProgressTint,
         )
 
+
+        val attrMap = drawableAttrMap + colorAttrMap
+
         val attrArr = attrMap.values.toIntArray()
         val typedArray = theme.obtainStyledAttributes(attrArr)
 
-        attrMap.keys.forEachIndexed { index, mutableLiveData ->
+        val drawableStartIndex = 0
+        drawableAttrMap.keys.forEachIndexed { index, mutableLiveData ->
             try {
-                mutableLiveData.value = typedArray.getColor(index, Color.TRANSPARENT)
+                mutableLiveData.value = typedArray.getDrawable(drawableStartIndex + index)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+
+        val colorStartIndex = drawableAttrMap.size
+        colorAttrMap.keys.forEachIndexed { index, mutableLiveData ->
+            try {
+                mutableLiveData.value = typedArray.getColorStateList(colorStartIndex + index)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        typedArray.recycle()
     }
 }

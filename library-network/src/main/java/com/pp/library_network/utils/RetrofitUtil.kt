@@ -13,5 +13,18 @@ object RetrofitUtil {
         return builder.build()
     }
 
+    fun create(
+        baseUrl: String,
+        querys: Map<String, String>? = null,
+        headers: Map<String, String>? = null,
+    ): Retrofit {
+
+        val builder = Retrofit.Builder()
+            .client(HttpUtil.getClient(querys, headers))
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+        return builder.build()
+    }
+
 
 }

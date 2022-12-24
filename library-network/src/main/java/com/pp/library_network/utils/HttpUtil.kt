@@ -24,10 +24,13 @@ object HttpUtil {
             .readTimeout(20, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS);
 
-        return builder.build();
+        return builder.build()
     }
 
-    fun getClient(querys: Map<String, String>? = null, vararg headers: Pair<String, String>): OkHttpClient {
+    fun getClient(
+        querys: Map<String, String>? = null,
+        headers: Map<String, String>? = null,
+    ): OkHttpClient {
         val logger = HttpLoggingInterceptor.Logger { message ->
             Log.e(TAG, "===> $message")
         }
@@ -35,30 +38,27 @@ object HttpUtil {
         val logInterceptor = HttpLoggingInterceptor(logger)
         logInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        val interceptor = object : Interceptor {
-            override fun intercept(chain: Interceptor.Chain): Response {
-                val original = chain.request()
-                val builder = original.newBuilder()
-                    .method(original.method(), original.body())
+        val interceptor = Interceptor { chain ->
+            val original = chain.request()
+            val builder = original.newBuilder()
+                .method(original.method(), original.body())
 
-                headers.onEach {
-                    builder.header(it.first, it.second)
-                }
-
-                val urlBuilder = original.url().newBuilder()
-                querys?.forEach {
-                    urlBuilder.addQueryParameter(it.key, it.value)
-                }
-
-                urlBuilder.host(original.url().host())
-                    .scheme(original.url().scheme())
-                val httpUrl = urlBuilder.build()
-
-                builder.url(httpUrl)
-
-                return chain.proceed(builder.build())
+            headers?.onEach {
+                builder.header(it.key, it.value)
             }
 
+            val urlBuilder = original.url().newBuilder()
+            querys?.forEach {
+                urlBuilder.addQueryParameter(it.key, it.value)
+            }
+
+            urlBuilder.host(original.url().host())
+                .scheme(original.url().scheme())
+            val httpUrl = urlBuilder.build()
+
+            builder.url(httpUrl)
+
+            chain.proceed(builder.build())
         }
 
         val builder = OkHttpClient.Builder()

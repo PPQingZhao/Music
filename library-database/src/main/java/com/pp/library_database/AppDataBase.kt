@@ -17,7 +17,7 @@ import kotlinx.coroutines.*
 /**
  * 数据库
  */
-@Database(entities = [User::class,FeedDetails::class], version = 3, exportSchema = false)
+@Database(entities = [User::class, FeedDetails::class], version = 2, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun getUserDao(): UserDao
@@ -26,7 +26,7 @@ abstract class AppDataBase : RoomDatabase() {
         private const val TAG = "AppDataBase"
 
         // 数据库名称
-        private const val DB_NAME = "Eyepetizer.db"
+        private const val DB_NAME = "Music.db"
 
         @SuppressLint("StaticFieldLeak")
         private var context: Context? = null

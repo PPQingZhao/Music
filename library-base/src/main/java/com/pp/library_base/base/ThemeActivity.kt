@@ -2,19 +2,21 @@ package com.pp.library_base.base
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.pp.library_ui.utils.AppTheme
-import com.pp.library_ui.utils.ViewTreeAppThemeViewModel
-import com.pp.library_ui.utils.Theme
-import com.pp.mvvm.LifecycleActivity
+import androidx.lifecycle.lifecycleScope
+import com.pp.library_base.datastore.PreferenceTheme
+import com.pp.library_base.datastore.getPreferenceTheme
 import com.pp.library_ui.BR
+import com.pp.library_ui.utils.AppTheme
+import com.pp.library_ui.utils.Theme
+import com.pp.library_ui.utils.ViewTreeAppThemeViewModel
+import com.pp.mvvm.LifecycleActivity
+import kotlinx.coroutines.launch
 
 /**
  * theme fragment
@@ -31,6 +33,7 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
                 mViewThemes.remove(theme)
             }
         })
+        theme.setTheme(getTheme())
         mViewThemes.add(theme)
     }
 
@@ -41,9 +44,26 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            getPreferenceTheme {
+                when (it) {
+                    PreferenceTheme.SIMPLE_NIGHT.ordinal -> {
+                        setTheme(com.pp.library_ui.R.style.Theme_Night)
+                    }
+                    PreferenceTheme.SIMPLE_BLUE.ordinal -> {
+                        setTheme(com.pp.library_ui.R.style.Theme_Blue)
+                    }
+                    else -> {
+                        setTheme(com.pp.library_ui.R.style.AppTheme)
+                    }
+                }
+            }
+        }
+
         // windowBackground 主题变化
         mThemeViewModel.windowBackground.observe(this) {
-            window.setBackgroundDrawable(ColorDrawable(it ?: Color.TRANSPARENT))
+            window.setBackgroundDrawable(it)
         }
 
         ViewTreeAppThemeViewModel.set(mBinding.root, mThemeViewModel)

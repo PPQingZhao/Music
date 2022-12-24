@@ -3,8 +3,8 @@
 
     <!--此模块定义主题样式,由library_ui模块引入-->
 
-    <!--day theme-->
-    <color name="colorWindowBackground">#FFFFFFFF</color>
+    <!--default theme-->
+    <color name="colorWindowBackground">#1F0D36</color>
     <color name="colorPrimary">#FFFFFFFF</color>
     <color name="colorOnPrimary">#FFFFFFFF</color>
     <color name="colorAccent">#FF9C27B0</color>
@@ -41,6 +41,26 @@
     <color name="nightIndicatorSelectedColor">#EFEFEF</color>
     <color name="nightProgressTint">#2196F3</color>
     <color name="nightSecondaryProgressTint">#929292</color>
+    <!--end-->
+
+    <!--blue theme-->
+    <color name="blueColorWindowBackground">#0000FF</color>
+    <color name="blueColorPrimary">#FFFFFFFF</color>
+    <color name="blueColorOnPrimary">#FFFFFFFF</color>
+    <color name="blueColorAccent">#FF9C27B0</color>
+    <color name="blueColorPrimaryVariant">#FFFFFFFF</color>
+    <color name="blueColorControlHighlight">#40929292</color>
+    <color name="blueColorControlNormal">#929292</color>
+    <color name="blueDrawableTint">#000000</color>
+    <color name="blueTextColor">#323232</color>
+    <color name="blueTextColorSecondary">#929292</color>
+    <color name="blueHintTextColor">#929292</color>
+    <color name="blueEditTextColor">#323232</color>
+    <color name="blueDividerColor">#929292</color>
+    <color name="blueIndicatorNormalColor">#40929292</color>
+    <color name="blueIndicatorSelectedColor">#323232</color>
+    <color name="blueProgressTint">#2196F3</color>
+    <color name="blueSecondaryProgressTint">#929292</color>
     <!--end-->
 
 </resources>

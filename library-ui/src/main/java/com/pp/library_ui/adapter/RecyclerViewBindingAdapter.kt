@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BindingAdapter<VB : ViewDataBinding, VM : Any, T : Any> :
+abstract class RecyclerViewBindingAdapter<VB : ViewDataBinding, VM : Any, T : Any> :
     RecyclerView.Adapter<BindingHolder<VB>>() {
 
     private val dataList by lazy { mutableListOf<T>() }
@@ -20,15 +20,15 @@ abstract class BindingAdapter<VB : ViewDataBinding, VM : Any, T : Any> :
     private val bindingHelper: AdapterBindingHelper<VB, VM, T> by lazy {
         object : AdapterBindingHelper<VB, VM, T>() {
             override fun createViewModel(binding: VB, item: T?, cacheItemViewModel: VM?): VM? {
-                return this@BindingAdapter.createViewModel(binding, item, cacheItemViewModel)
+                return this@RecyclerViewBindingAdapter.createViewModel(binding, item, cacheItemViewModel)
             }
 
             override fun createBinding(parent: ViewGroup, viewType: Int): VB {
-                return this@BindingAdapter.createBinding(parent, viewType)
+                return this@RecyclerViewBindingAdapter.createBinding(parent, viewType)
             }
 
             override fun onSetVariable(binding: VB, viewModel: VM?): Boolean {
-                return this@BindingAdapter.onSetVariable(binding, viewModel)
+                return this@RecyclerViewBindingAdapter.onSetVariable(binding, viewModel)
             }
 
         }
