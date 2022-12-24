@@ -6,21 +6,22 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.slidingpanelayout.widget.SlidingPaneLayout
+        android:id="@+id/slide"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="onLogin"
-            android:text="login"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.8" />
+        <include
+            android:id="@+id/user_info"
+            layout="@layout/include_userinfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/main"
+            layout="@layout/include_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 </layout>

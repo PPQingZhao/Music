@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".LoginAndRegisterActivity"
+            android:name=".ui.LoginAndRegisterActivity"
             android:configChanges="locale|keyboardHidden|keyboard|orientation|colorMode"
             android:exported="true"
             android:screenOrientation="portrait"

@@ -8,23 +8,47 @@
         <variable
             name="themeViewModel"
             type="com.pp.library_ui.utils.AppTheme" />
+
+        <variable
+            name="viewModel"
+            type="com.pp.module_user.ui.LoginAndRegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginAndRegisterActivity">
+        tools:context=".ui.LoginAndRegisterActivity">
 
-        <Button
-            android:onClick="onTheme"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="login"
-            android:textColor="@{themeViewModel.colorAccent}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fitsSystemWindows="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:text="@{viewModel.title}"
+                android:textColor="@{themeViewModel.textColor}"
+                tools:text="@string/user_login"
+                tools:textColor="?android:textColor" />
+
+            <ImageView
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:clickable="true"
+                android:onClick="onBack"
+                android:scaleType="center"
+                android:src="@drawable/ic_arrow_back"
+                tools:ignore="UsingOnClickInXml" />
+
+        </FrameLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

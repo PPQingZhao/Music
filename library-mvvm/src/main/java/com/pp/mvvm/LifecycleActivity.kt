@@ -57,10 +57,6 @@ abstract class LifecycleActivity<VB : ViewDataBinding, VM : LifecycleViewModel> 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        if (customTheme())
-            return
-
-        setTranslucent()
         /*
             windowInsets分发:拦截WindowInsets, 将windowInsets分发给每个fragment
             沉浸式状态栏: window flags = LayoutParams.FLAG_TRANSLUCENT_STATUS 配合布局中 android:fitsSystemWindows="true"进行实现
@@ -104,38 +100,6 @@ abstract class LifecycleActivity<VB : ViewDataBinding, VM : LifecycleViewModel> 
                 }
             }
         }, true)
-    }
-
-    protected open fun customTheme(): Boolean {
-        return false
-    }
-
-    /**
-     * 设置状态栏字体颜色
-     * TODO 未做设配
-     */
-    fun requireLightStatusBar(light: Boolean) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.setSystemBarsAppearance(
-                if (light) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.decorView.systemUiVisibility =
-                if (light) View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR else View.VISIBLE
-        }
-
-    }
-
-    private fun setTranslucent() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-
-            window.addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
     }
 
 }

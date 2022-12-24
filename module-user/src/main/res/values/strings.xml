@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_login">用户登录</string>
+    <string name="user_register">用户注册</string>
+</resources>

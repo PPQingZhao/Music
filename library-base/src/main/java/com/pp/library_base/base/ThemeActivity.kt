@@ -2,7 +2,11 @@ package com.pp.library_base.base
 
 import android.content.Context
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -84,6 +88,39 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
             mViewThemes.forEach {
                 it.setTheme(theme)
             }
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        setTranslucent()
+    }
+
+    /**
+     * 设置状态栏字体颜色
+     * TODO 未做设配
+     */
+    fun requireLightStatusBar(light: Boolean) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.setSystemBarsAppearance(
+                if (light) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility =
+                if (light) View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR else View.VISIBLE
+        }
+
+    }
+
+    private fun setTranslucent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
     }
 }

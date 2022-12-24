@@ -12,7 +12,7 @@
     <color name="colorControlHighlight">#40929292</color>
     <color name="colorControlNormal">#929292</color>
     <color name="drawableTint">#000000</color>
-    <color name="textColor">#323232</color>
+    <color name="textColor">#ffffff</color>
     <color name="textColorSecondary">#929292</color>
     <color name="hintTextColor">#929292</color>
     <color name="editTextColor">#323232</color>
@@ -44,7 +44,7 @@
     <!--end-->
 
     <!--blue theme-->
-    <color name="blueColorWindowBackground">#0000FF</color>
+    <color name="blueColorWindowBackground">#0A246F</color>
     <color name="blueColorPrimary">#FFFFFFFF</color>
     <color name="blueColorOnPrimary">#FFFFFFFF</color>
     <color name="blueColorAccent">#FF9C27B0</color>

@@ -1,4 +1,4 @@
-package com.pp.module_user
+package com.pp.module_user.ui
 
 import android.view.View
 import androidx.lifecycle.lifecycleScope
@@ -9,20 +9,22 @@ import com.pp.library_base.datastore.PreferenceTheme
 import com.pp.library_base.datastore.setPreferenceTheme
 import com.pp.library_router_service.services.RouterPath
 import com.pp.module_user.databinding.ActivityLoginAndRegisterBinding
-import com.pp.module_user.manager.UserManager
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @Route(path = RouterPath.User.activity_login)
-class LoginAndRegisterActivity : ThemeActivity<ActivityLoginAndRegisterBinding, ThemeViewModel>() {
+class LoginAndRegisterActivity : ThemeActivity<ActivityLoginAndRegisterBinding, LoginAndRegisterViewModel>() {
     override val mBinding: ActivityLoginAndRegisterBinding by lazy {
         ActivityLoginAndRegisterBinding.inflate(
             layoutInflater
         )
     }
 
-    override fun getModelClazz(): Class<ThemeViewModel> {
-        return ThemeViewModel::class.java
+    override fun getModelClazz(): Class<LoginAndRegisterViewModel> {
+        return LoginAndRegisterViewModel::class.java
+    }
+
+    fun onBack(view: View) {
+        onBackPressed()
     }
 
     var flag = 0

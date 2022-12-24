@@ -44,7 +44,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="android:windowBackground">@drawable/shape_window_bg</item>
 
     </style>
 
