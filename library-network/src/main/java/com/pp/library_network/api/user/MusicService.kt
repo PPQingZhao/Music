@@ -22,6 +22,8 @@ interface MusicService {
     object ErrorCode {
         const val FAILED = -1
         const val SUCCESS = 0
+        // 登录:账号不存在
+        const val LOGIN_USER_INVALID = 1
     }
 
     object LoginStatus {

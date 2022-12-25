@@ -29,6 +29,7 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
     LifecycleActivity<VB, VM>() {
 
     val mThemeViewModel = AppTheme()
+
     private val mViewThemes by lazy { mutableListOf<Theme>() }
 
     private fun applyTheme(lifecycle: Lifecycle, theme: Theme) {
@@ -51,6 +52,10 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
 
         lifecycleScope.launch {
             getPreferenceTheme {
+
+                // 自定义主题
+                if (onGetPreferenceTheme(it)) return@getPreferenceTheme
+
                 when (it) {
                     PreferenceTheme.SIMPLE_NIGHT.ordinal -> {
                         setTheme(com.pp.library_ui.R.style.Theme_Night)
@@ -71,6 +76,10 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
         }
 
         ViewTreeAppThemeViewModel.set(mBinding.root, mThemeViewModel)
+    }
+
+    open fun onGetPreferenceTheme(theme: Int?): Boolean {
+        return false;
     }
 
     @CallSuper
@@ -98,7 +107,6 @@ abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
 
     /**
      * 设置状态栏字体颜色
-     * TODO 未做设配
      */
     fun requireLightStatusBar(light: Boolean) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

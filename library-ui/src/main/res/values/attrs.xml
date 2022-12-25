@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--页面背景 区分 windowBackground-->
+    <attr name="contentBackground" format="color|reference" />
     <declare-styleable name="IndicatorView">
         <attr name="indicatorSelectedColor" format="color" />
         <attr name="indicatorNormalColor" format="color" />
     </declare-styleable>
-
-    <!--用于适应主题 drawable tint-->
-    <attr name="themeTint" format="color" />
-    <attr name="dividerColor" format="color" />
 
     <declare-styleable name="StateView">
         <attr name="loading_layout_id" format="reference" />
@@ -38,7 +37,7 @@
         <attr name="use_controller" />
         <attr name="use_bottom_timeBar" format="boolean" />
         <!--cover scaleType-->
-        <attr name="android:scaleType"/>
+        <attr name="android:scaleType" />
     </declare-styleable>
 
 </resources>

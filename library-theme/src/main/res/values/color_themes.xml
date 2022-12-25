@@ -32,7 +32,7 @@
     <color name="nightColorControlHighlight">#40929292</color>
     <color name="nightColorControlNormal">#929292</color>
     <color name="nightDrawableTint">#ffffff</color>
-    <color name="nightTextColor">#EFEFEF</color>
+    <color name="nightTextColor">#ffffff</color>
     <color name="nightTextColorSecondary">#6F6767</color>
     <color name="nightHintTextColor">#929292</color>
     <color name="nightEditTextColor">#40929292</color>
@@ -52,7 +52,7 @@
     <color name="blueColorControlHighlight">#40929292</color>
     <color name="blueColorControlNormal">#929292</color>
     <color name="blueDrawableTint">#000000</color>
-    <color name="blueTextColor">#323232</color>
+    <color name="blueTextColor">#ffffff</color>
     <color name="blueTextColorSecondary">#929292</color>
     <color name="blueHintTextColor">#929292</color>
     <color name="blueEditTextColor">#323232</color>

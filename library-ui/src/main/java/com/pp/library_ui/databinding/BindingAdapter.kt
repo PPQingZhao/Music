@@ -1,10 +1,14 @@
 package com.pp.library_ui.databinding
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.StringRes
+import com.google.android.material.textfield.TextInputLayout
 
 object BindingAdapter {
 
@@ -25,6 +29,26 @@ object BindingAdapter {
         } else {
             view.text = ""
         }
+    }
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("enable")
+    fun setEnable(iv: View, enable: Boolean) {
+//        Log.e("TAG", "res: $res")
+        iv.isEnabled = enable
+    }
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("errorMessage")
+    fun setErrorMessage(inputLayout: TextInputLayout, error: CharSequence) {
+        Log.e("TAG", "$error")
+        inputLayout.error = error
+    }
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("android:tint")
+    fun setImageTint(iv: ImageView, color: ColorStateList) {
+        iv.imageTintList = color
     }
 
 }

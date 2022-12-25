@@ -33,8 +33,6 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:editTextColor">@color/editTextColor</item>
         <item name="android:textColorHint">@color/hintTextColor</item>
-        <item name="themeTint">@color/drawableTint</item>
-        <item name="dividerColor">@color/dividerColor</item>
         <item name="indicatorNormalColor">@color/indicatorNormalColor</item>
         <item name="indicatorSelectedColor">@color/indicatorSelectedColor</item>
         <item name="android:progressTint">@color/progressTint</item>
@@ -44,8 +42,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:windowBackground">@drawable/shape_window_bg</item>
-
+        <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="contentBackground">@drawable/shape_window_bg</item>
     </style>
 
     <style name="Theme.Night" parent="AppTheme">
@@ -61,8 +59,6 @@
         <item name="android:textColorSecondary">@color/nightTextColorSecondary</item>
         <item name="android:editTextColor">@color/nightEditTextColor</item>
         <item name="android:textColorHint">@color/nightHintTextColor</item>
-        <item name="themeTint">@color/nightDrawableTint</item>
-        <item name="dividerColor">@color/nightDividerColor</item>
         <item name="indicatorNormalColor">@color/nightIndicatorNormalColor</item>
         <item name="indicatorSelectedColor">@color/nightIndicatorSelectedColor</item>
         <item name="android:progressTint">@color/nightProgressTint</item>
@@ -73,6 +69,7 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowBackground">@color/nightColorWindowBackground</item>
+        <item name="contentBackground">@drawable/shape_window_bg_night</item>
 
     </style>
 
@@ -89,8 +86,6 @@
         <item name="android:textColorSecondary">@color/blueTextColorSecondary</item>
         <item name="android:editTextColor">@color/blueEditTextColor</item>
         <item name="android:textColorHint">@color/blueHintTextColor</item>
-        <item name="themeTint">@color/blueDrawableTint</item>
-        <item name="dividerColor">@color/blueDividerColor</item>
         <item name="indicatorNormalColor">@color/blueIndicatorNormalColor</item>
         <item name="indicatorSelectedColor">@color/blueIndicatorSelectedColor</item>
         <item name="android:progressTint">@color/blueProgressTint</item>
@@ -101,7 +96,7 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowBackground">@color/blueColorWindowBackground</item>
-
+        <item name="contentBackground">@drawable/shape_window_bg_blue</item>
     </style>
 
 </resources>

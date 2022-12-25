@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Default.Login" parent="AppTheme">
+        <item name="colorButtonNormal">#50aaa3aa</item>
+        <item name="colorControlActivated">#9C27B0</item>
+        <item name="android:windowBackground">@drawable/shape_window_bg</item>
+    </style>
+
+    <style name="Theme.Night.Login" parent="Theme.Night">
+        <item name="colorButtonNormal">#50aaa3aa</item>
+        <item name="colorControlActivated">#9C27B0</item>
+        <item name="android:windowBackground">@drawable/shape_window_bg_night</item>
+    </style>
+
+    <style name="Theme.Blue.Login" parent="Theme.Blue">
+        <item name="colorButtonNormal">#50aaa3aa</item>
+        <item name="colorControlActivated">#9C27B0</item>
+        <item name="android:windowBackground">@drawable/shape_window_bg_blue</item>
+    </style>
+</resources>

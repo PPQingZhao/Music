@@ -11,15 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/user_info"
-            layout="@layout/include_userinfo"
+        <FrameLayout
+            android:id="@+id/fl_user"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <include
-            android:id="@+id/main"
-            layout="@layout/include_main"
+        <FrameLayout
+            android:id="@+id/fl_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

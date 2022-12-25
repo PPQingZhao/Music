@@ -10,26 +10,29 @@ import androidx.lifecycle.MutableLiveData
 class AppTheme : Theme {
 
     val windowBackground = MutableLiveData<Drawable?>()
+    val contentBackground = MutableLiveData<Drawable?>()
     val colorPrimary = MutableLiveData<ColorStateList>()
     val colorAccent = MutableLiveData<ColorStateList>()
     val textColor = MutableLiveData<ColorStateList>()
     val textColorSecondary = MutableLiveData<ColorStateList>()
     val textColorHint = MutableLiveData<ColorStateList>()
     val editTextColor = MutableLiveData<ColorStateList>()
-    val themeTint = MutableLiveData<ColorStateList>()
     val indicatorNormalColor = MutableLiveData<ColorStateList>()
     val indicatorSelectedColor = MutableLiveData<ColorStateList>()
-    val dividerColor = MutableLiveData<ColorStateList>()
     val progressTint = MutableLiveData<ColorStateList>()
     val secondaryProgressTint = MutableLiveData<ColorStateList>()
+    val colorControlActivated = MutableLiveData<ColorStateList>()
+    val colorButtonNormal = MutableLiveData<ColorStateList>()
 
     @SuppressLint("ResourceType", "Recycle")
     override fun setTheme(theme: Resources.Theme) {
 
-        val drawableAttrMap = mapOf(windowBackground to R.attr.windowBackground)
+        val drawableAttrMap = mapOf(
+            windowBackground to R.attr.windowBackground,
+            contentBackground to com.pp.library_ui.R.attr.contentBackground
+        )
 
         val colorAttrMap = mapOf(
-            themeTint to com.pp.library_ui.R.attr.themeTint,
             colorPrimary to R.attr.colorPrimary,
             colorAccent to R.attr.colorAccent,
             textColor to R.attr.textColor,
@@ -38,9 +41,10 @@ class AppTheme : Theme {
             editTextColor to R.attr.editTextColor,
             indicatorNormalColor to com.pp.library_ui.R.attr.indicatorNormalColor,
             indicatorSelectedColor to com.pp.library_ui.R.attr.indicatorSelectedColor,
-            dividerColor to com.pp.library_ui.R.attr.dividerColor,
             progressTint to R.attr.progressTint,
             secondaryProgressTint to R.attr.secondaryProgressTint,
+            colorControlActivated to R.attr.colorControlActivated,
+            colorButtonNormal to R.attr.colorButtonNormal,
         )
 
 

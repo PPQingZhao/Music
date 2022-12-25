@@ -14,30 +14,19 @@
             type="com.pp.module_user.ui.LoginAndRegisterViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.LoginAndRegisterActivity">
+        android:overScrollMode="never">
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:background="?selectableItemBackground"
-                android:gravity="center"
-                android:text="@{viewModel.title}"
-                android:textColor="@{themeViewModel.textColor}"
-                tools:text="@string/user_login"
-                tools:textColor="?android:textColor" />
+            android:fitsSystemWindows="true">
 
             <ImageView
+                android:id="@+id/iv_back"
                 android:layout_width="?actionBarSize"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/margin_normal"
@@ -45,10 +34,45 @@
                 android:onClick="onBack"
                 android:scaleType="center"
                 android:src="@drawable/ic_arrow_back"
-                tools:ignore="UsingOnClickInXml" />
+                android:tint="@{themeViewModel.textColor}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseAppTint,UsingOnClickInXml"
+                tools:tint="?android:textColor" />
 
-        </FrameLayout>
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_logo"
+                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
 
+            <!--    <ViewSwitcher
+                    android:id="@+id/view_switcher"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="4:5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_logo" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ViewSwitcher
+                android:id="@+id/view_switcher"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_large"
+                app:layout_constraintDimensionRatio="4:5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </layout>

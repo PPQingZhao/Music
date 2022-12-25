@@ -1,6 +1,6 @@
 package com.pp.library_network.bean.user
 
-data class LoginBean(
+open class LoginBean(
     val `property`: Property = Property(),
     val token: String = "",
     val user: User = User(),

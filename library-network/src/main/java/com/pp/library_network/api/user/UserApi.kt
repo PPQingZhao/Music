@@ -36,7 +36,7 @@ interface UserApi {
     suspend fun registerByUserName(
         @Field("username") userName: String? = "",
         @Field("password") passWord: String? = "",
-    ): ResponseBody
+    ): ResponseBean<LoginBean>
 
     /**
      * 获取用户(token)信息
