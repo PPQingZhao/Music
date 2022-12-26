@@ -22,6 +22,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username"
+            style="@style/StyleTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
@@ -37,19 +38,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={viewModel.username}"
-                android:textColor="@{themeViewModel.textColor}" />
+                android:textColor="@{themeViewModel.textColor}"
+                android:textSize="13sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password"
+            style="@style/StyleTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
             android:hint="@string/hint_password"
-            app:boxStrokeErrorColor="@{viewModel.succeed ? @android:color/holo_green_dark:@android:color/holo_red_dark}"
+            app:boxStrokeErrorColor="@android:color/holo_red_dark"
             app:errorEnabled="@{!TextUtils.isEmpty(viewModel.errorMessage)}"
             app:errorMessage="@{viewModel.errorMessage}"
-            app:errorTextColor="@{viewModel.succeed ? @android:color/holo_green_dark:@android:color/holo_red_dark}"
+            app:errorTextColor="@android:color/holo_red_dark"
+            app:helperText="@{viewModel.helperMessage}"
+            app:helperTextEnabled="@{!TextUtils.isEmpty(viewModel.helperMessage)}"
+            app:helperTextColor="@{viewModel.succeed ? @android:color/holo_green_dark:@android:color/holo_orange_light}"
             app:layout_constraintBottom_toTopOf="@id/card_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:text="@={viewModel.password}"
-                android:textColor="@{themeViewModel.textColor}" />
+                android:textColor="@{themeViewModel.textColor}"
+                android:textSize="13sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.cardview.widget.CardView

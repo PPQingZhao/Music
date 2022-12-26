@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 open class LoginViewModel {
     val enable = ObservableBoolean(false)
     val errorMessage = MutableLiveData<String>("")
+    val helperMessage = MutableLiveData<String>("")
     val username = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
     val succeed = MutableLiveData<Boolean>(false)

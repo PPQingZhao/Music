@@ -1,5 +1,6 @@
 package com.pp.module_user.model
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
 import com.pp.library_network.api.user.MusicService
@@ -21,6 +22,7 @@ class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
 
         val observer = { v: String? ->
             errorMessage.value = ""
+            helperMessage.value = ""
             enable.set(
                 !(username.value?.isEmpty() ?: true)
                         && !(password.value?.isEmpty() ?: true)
@@ -38,14 +40,16 @@ class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
     override fun onClick(view: View) {
         succeed.value = false
         errorMessage.value = ""
+        helperMessage.value = ""
         lifecycleScope?.launch {
             UserManager.login(username.value, password.value)
                 .catch {
-                    it.printStackTrace()
+                    Log.e("UserLoginViewModel", "${it.message}")
+                    errorMessage.value = "发生错误"
                 }
                 .collect {
                     withContext(Dispatchers.Main) {
-                        errorMessage.value = it.msg
+                        helperMessage.value = it.msg
                         succeed.value = it.code == MusicService.ErrorCode.SUCCESS
                     }
                 }

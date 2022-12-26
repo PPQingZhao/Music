@@ -26,11 +26,14 @@ class UserFragment : ThemeFragment<FragmentUserBinding, UserViewModel>() {
         mBinding.btnTheme.setOnClickListener {
             onTheme()
         }
+
+        mBinding.btnLogin.setOnClickListener {
+            LoginAndRegisterActivity.start(requireActivity())
+        }
     }
 
     var flag = 0
-    fun onTheme() {
-        LoginAndRegisterActivity.start(requireActivity())
+    private fun onTheme() {
 
         lifecycleScope.launch {
             when (flag % 3) {

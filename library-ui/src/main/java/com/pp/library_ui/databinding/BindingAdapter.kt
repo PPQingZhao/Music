@@ -2,21 +2,33 @@ package com.pp.library_ui.databinding
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.ColorStateListDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.StateListDrawable
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.StringRes
+import androidx.core.content.res.ComplexColorCompat
 import com.google.android.material.textfield.TextInputLayout
 
 object BindingAdapter {
 
     @JvmStatic
     @androidx.databinding.BindingAdapter("android:background")
-    fun setImageResource(iv: View, drawable: Drawable?) {
+    fun setBackground(iv: View, drawable: Drawable?) {
 //        Log.e("TAG", "res: $res")
         iv.background = drawable
+    }
+
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("android:background")
+    fun setBackground(iv: View, color: ColorStateList) {
+//        Log.e("TAG", "res: $res")
+        iv.background = ColorDrawable(color.defaultColor)
     }
 
     @SuppressLint("ResourceType")
@@ -41,8 +53,15 @@ object BindingAdapter {
     @JvmStatic
     @androidx.databinding.BindingAdapter("errorMessage")
     fun setErrorMessage(inputLayout: TextInputLayout, error: CharSequence) {
-        Log.e("TAG", "$error")
+//        Log.e("TAG", "$error")
         inputLayout.error = error
+    }
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("helperText")
+    fun setHelperText(inputLayout: TextInputLayout, text: CharSequence) {
+//        Log.e("TAG", "$error")
+        inputLayout.helperText = text
     }
 
     @JvmStatic

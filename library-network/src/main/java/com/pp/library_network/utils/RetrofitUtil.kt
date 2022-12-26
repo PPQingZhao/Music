@@ -1,29 +1,20 @@
 package com.pp.library_network.utils
 
+import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitUtil {
-    fun create(baseUrl: String): Retrofit {
-
-        val builder = Retrofit.Builder()
-            .client(HttpUtil.getClient())
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-        return builder.build()
-    }
 
     fun create(
         baseUrl: String,
-        querys: Map<String, String>? = null,
-        headers: Map<String, String>? = null,
+        vararg interceptor: Interceptor,
     ): Retrofit {
-
-        val builder = Retrofit.Builder()
-            .client(HttpUtil.getClient(querys, headers))
+        return Retrofit.Builder()
+            .client(HttpUtil.getClient(*interceptor))
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-        return builder.build()
+            .build()
     }
 
 
