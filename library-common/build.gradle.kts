@@ -49,7 +49,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit.get())
     androidTestImplementation(libs.espresso.core.get())
 
-    api(libs.leakcanary)
+    debugApi(libs.leakcanary)
     implementation(libs.arouter.api)
     kapt(libs.arouter.compiler)
 

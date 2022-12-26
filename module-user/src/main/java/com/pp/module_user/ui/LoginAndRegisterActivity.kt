@@ -5,8 +5,10 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Fade
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
+import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.pp.library_base.base.ThemeActivity
 import com.pp.library_base.datastore.PreferenceTheme
@@ -15,6 +17,8 @@ import com.pp.module_user.R
 import com.pp.module_user.databinding.ActivityLoginAndRegisterBinding
 import com.pp.module_user.databinding.ViewLoginBindingImpl
 import com.pp.module_user.databinding.ViewRegisterBindingImpl
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @Route(path = RouterPath.User.activity_login)
 class LoginAndRegisterActivity :
@@ -61,7 +65,56 @@ class LoginAndRegisterActivity :
         super.onCreate(savedInstanceState)
         window.enterTransition = Fade()
         window.exitTransition = Fade()
+
+        initLoginViewModel()
+        initRegisterViewModel()
+
         initSwitchView()
+    }
+
+    private fun initRegisterViewModel() {
+        // 注册成功,更新并且显示 登录ui
+        lifecycleScope.launch {
+            mViewModel.registerViewModel.registerResult.collect {
+                if (it) {
+                    // 更新登录ui
+                    mViewModel.loginViewModel.username.value =
+                        mViewModel.registerViewModel.username.value
+                    mViewModel.loginViewModel.password.value =
+                        mViewModel.registerViewModel.password.value
+                    // 显示登录ui
+                    mBinding.viewSwitcher.showNext()
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            // 注册页面点击返回按钮,隐藏注册ui,显示登录ui
+            mViewModel.registerViewModel.onReturn.collect {
+                if (it) {
+                    mBinding.viewSwitcher.showNext()
+                }
+            }
+        }
+    }
+
+    private fun initLoginViewModel() {
+        lifecycleScope.launch {
+            mViewModel.loginViewModel.loginResult.collect {
+                if (it) {
+                    finishAfterTransition()
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            mViewModel.loginViewModel.onNewUser.collect {
+                if (it) {
+                    mViewModel.registerViewModel.reset()
+                    mBinding.viewSwitcher.showPrevious()
+                }
+            }
+        }
     }
 
     private fun initSwitchView() {
@@ -70,14 +123,7 @@ class LoginAndRegisterActivity :
             mBinding.viewSwitcher,
             false
         )
-        mViewModel.loginViewModel.isLogin().observe(this) {
-            if (it == true) {
-                finishAfterTransition()
-            }
-        }
-        mViewModel.loginViewModel.onNewUser = {
-            mBinding.viewSwitcher.showPrevious()
-        }
+
         viewLoginBinding.lifecycleOwner = this
         viewLoginBinding.themeViewModel = mThemeViewModel
         viewLoginBinding.viewModel = mViewModel.loginViewModel
@@ -87,18 +133,7 @@ class LoginAndRegisterActivity :
             mBinding.viewSwitcher,
             false
         )
-        mViewModel.registerViewModel.onReturn = {
-            mBinding.viewSwitcher.showNext()
-        }
-        mViewModel.registerViewModel.isRegisterSucceed().observe(this) {
-            if (it == true) {
-                mViewModel.loginViewModel.username.value =
-                    mViewModel.registerViewModel.username.value
-                mViewModel.loginViewModel.password.value =
-                    mViewModel.registerViewModel.password.value
-                mBinding.viewSwitcher.showNext()
-            }
-        }
+
         viewRegisterBinding.lifecycleOwner = this
         viewRegisterBinding.themeViewModel = mThemeViewModel
         viewRegisterBinding.viewModel = mViewModel.registerViewModel

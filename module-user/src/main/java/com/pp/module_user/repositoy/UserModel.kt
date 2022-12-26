@@ -38,37 +38,34 @@ class UserModel(private val user: User) {
         return user.password
     }
 
-    fun login(): Flow<ResponseBean<LoginBean>> {
-        return flow<ResponseBean<LoginBean>> {
-            Log.v(TAG, "start login: ${user.name}")
-            // 执行登录逻辑
-            val response = MusicService.userApi.loginByUserName(user.name, user.password)
-            emit(response)
+    suspend fun login(): ResponseBean<LoginBean> {
+        Log.v(TAG, "start login: ${user.name}")
+        // 执行登录逻辑
+        val loginResponse = MusicService.userApi.loginByUserName(user.name, user.password)
 
-        }.onEach { loginResponse ->
-            Log.v(TAG, "login code: ${loginResponse.code}")
-            if (loginResponse.code == MusicService.ErrorCode.SUCCESS) {
-                withContext(Dispatchers.Main) {
-                    loginBean.value = loginResponse.data
-                    MusicService.setToken(loginResponse.data.token)
-                }
+        Log.v(TAG, "login code: ${loginResponse.code}")
+        if (loginResponse.code == MusicService.ErrorCode.SUCCESS) {
+            withContext(Dispatchers.Main) {
+                loginBean.value = loginResponse.data
+                MusicService.setToken(loginResponse.data.token)
+            }
 
-                val userInfoResponse = MusicService.userApi.getUserInfo()
-                withContext(Dispatchers.Main) {
-                    if (userInfoResponse.code == MusicService.ErrorCode.SUCCESS) {
-                        val infoBean = userInfoResponse.data
-                        userInfoBean.value = infoBean
-                        isLogin.value = infoBean.login.is_login == MusicService.LoginStatus.LOGIN
-                    } else {
-                        userInfoBean.value = null
-                    }
-                }
-            } else {
-                withContext(Dispatchers.Main) {
-                    reset()
+            val userInfoResponse = MusicService.userApi.getUserInfo()
+            withContext(Dispatchers.Main) {
+                if (userInfoResponse.code == MusicService.ErrorCode.SUCCESS) {
+                    val infoBean = userInfoResponse.data
+                    userInfoBean.value = infoBean
+                    isLogin.value = infoBean.login.is_login == MusicService.LoginStatus.LOGIN
+                } else {
+                    userInfoBean.value = null
                 }
             }
-        }.flowOn(Dispatchers.IO)
+        } else {
+            withContext(Dispatchers.Main) {
+                reset()
+            }
+        }
+        return loginResponse
     }
 
     private fun reset() {
@@ -77,13 +74,12 @@ class UserModel(private val user: User) {
         loginBean.value = null
     }
 
-    fun logout(): Flow<ResponseBean<String>> {
-        return flow {
-            Log.v(TAG, "start logout: ${user.name}")
-            emit(ResponseBean(0, "", ""))
-        }.onEach {
+    suspend fun logout(): ResponseBean<String> {
+        Log.v(TAG, "start logout: ${user.name}")
+        withContext(Dispatchers.Main) {
             reset()
         }
+        return ResponseBean(0, "", "")
     }
 
 }

@@ -4,19 +4,15 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
 import com.pp.library_network.api.user.MusicService
-import com.pp.module_user.manager.UserManager
 import com.pp.module_user.repositoy.UserRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class UserRegisterViewModel : RegisterViewModel(), DefaultLifecycleObserver {
 
-    private var lifecycleScope: LifecycleCoroutineScope? = null
     override fun onCreate(owner: LifecycleOwner) {
-        lifecycleScope = owner.lifecycleScope
 
         val observer = { v: String? ->
             errorMessage.value = ""
@@ -30,33 +26,45 @@ class UserRegisterViewModel : RegisterViewModel(), DefaultLifecycleObserver {
         password.observe(owner, observer)
     }
 
-    fun isRegisterSucceed(): LiveData<Boolean> {
-        return succeed
-    }
+    private val _registerResult = MutableSharedFlow<Boolean>()
+    val registerResult: SharedFlow<Boolean> = _registerResult
 
     override fun onClick(view: View) {
         errorMessage.value = ""
         helperMessage.value = ""
         succeed.value = false
+        ViewTreeLifecycleOwner.get(view)?.lifecycleScope?.launch {
+            try {
+                val response = UserRepository.register(username.value, password.value)
 
-        lifecycleScope?.launch {
-            UserRepository.register(username.value, password.value)
-                .catch {
-                    Log.e("UserRegisterViewModel","${it.message}")
-                    errorMessage.value = "发生错误"
+                val result = response.code == MusicService.ErrorCode.SUCCESS
+                _registerResult.emit(result)
+
+                withContext(Dispatchers.Main) {
+                    helperMessage.value = response.msg
+                    succeed.value = result
                 }
-                .collect {
-                    withContext(Dispatchers.Main) {
-                        helperMessage.value = it.msg
-                        succeed.value = it.code == MusicService.ErrorCode.SUCCESS
-                    }
-                }
+            } catch (e: Throwable) {
+                Log.e("UserRegisterViewModel", "${e.message}")
+                errorMessage.value = "发生错误"
+            }
         }
     }
 
-    var onReturn: (() -> Unit)? = null
+    fun reset() {
+        username.value = ""
+        password.value = ""
+        errorMessage.value = ""
+        helperMessage.value = ""
+    }
+
+    private val _onReturn = MutableSharedFlow<Boolean>()
+    val onReturn: SharedFlow<Boolean> = _onReturn
     override fun onReturn(view: View) {
-        onReturn?.invoke()
+        ViewTreeLifecycleOwner.get(view)?.lifecycleScope?.launch {
+            _onReturn.emit(true)
+        }
+        reset()
     }
 
 }

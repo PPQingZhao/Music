@@ -28,6 +28,7 @@ open class App : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         mInstance = this
+
         // init ARouter
         if (BuildConfig.DEBUG) {
             ARouter.openDebug()

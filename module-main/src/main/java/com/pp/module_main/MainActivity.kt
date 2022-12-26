@@ -50,10 +50,11 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
 
     private fun initSlideView() {
         mBinding.slide.sliderFadeColor = Color.TRANSPARENT
-        mBinding.slide.setPanelSlideListener(object : SlidingPaneLayout.SimplePanelSlideListener() {
-            override fun onPanelSlide(panel: View, slideOffset: Float) {
-            }
-        })
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mBinding.slide.closePane()
     }
 
 }
