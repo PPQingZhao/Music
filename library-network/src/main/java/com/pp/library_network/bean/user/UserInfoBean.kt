@@ -1,5 +1,34 @@
 package com.pp.library_network.bean.user
+/*
+{
+  "code": 0,
+  "msg": "操作成功",
+  "data": {
+    "is_admin": 0,
+    "login": {
+      "e_mail": "",
+      "is_login": 1,
+      "last_login_ip": "223.73.201.248",
+      "last_login_time": "2022-12-27 02:10:07",
+      "mobile": "",
+      "username": "test6"
+    },
+    "property": {
+      "id": 98,
+      "money": "0.00",
+      "user_id": 98,
+      "vip": 0
+    },
+    "user": {
+      "avatar": "",
+      "id": 98,
+      "motto": "",
+      "nick": "901672074902"
+    }
+  }
+}
 
+* */
 data class UserInfoBean(
     val is_admin: Int = 0,
     val login: Login = Login(),

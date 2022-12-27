@@ -7,4 +7,8 @@ object RouterPath {
         const val fragment_user = "/user/fragment_user"
     }
 
+    object Local {
+        const val fragment_local = "/local/fragment_user"
+    }
+
 }
