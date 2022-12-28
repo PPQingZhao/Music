@@ -6,10 +6,11 @@
 
     </data>
 
-    <androidx.slidingpanelayout.widget.SlidingPaneLayout
-        android:id="@+id/slide"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/activity_main_scene">
 
         <FrameLayout
             android:id="@+id/fl_user"
@@ -21,5 +22,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </androidx.slidingpanelayout.widget.SlidingPaneLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

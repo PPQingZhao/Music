@@ -2,7 +2,6 @@ package com.pp.module_main
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.launcher.ARouter
@@ -28,7 +27,6 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initSlideView()
         initFragments()
     }
 
@@ -43,13 +41,9 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
             .commitNow()
     }
 
-    private fun initSlideView() {
-        mBinding.slide.sliderFadeColor = Color.TRANSPARENT
-    }
-
     override fun onStop() {
         super.onStop()
-        mBinding.slide.closePane()
+        mBinding.motionLayout.progress = 0f
     }
 
 }

@@ -4,10 +4,9 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.transition.Fade
-import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.pp.library_base.base.ThemeActivity
@@ -63,8 +62,6 @@ class LoginAndRegisterActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.enterTransition = Fade()
-        window.exitTransition = Fade()
 
         initLoginViewModel()
         initRegisterViewModel()
@@ -102,7 +99,7 @@ class LoginAndRegisterActivity :
         lifecycleScope.launch {
             mViewModel.loginViewModel.loginResult.collect {
                 if (it) {
-                    finishAfterTransition()
+                    ActivityCompat.finishAfterTransition(this@LoginAndRegisterActivity)
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.pp.library_ui.utils
 
 import android.animation.Animator
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.AnimatorRes
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -43,14 +44,17 @@ fun ImageView.starAnimator(@AnimatorRes id: Int): Animator? {
 /**
  * 加载图片
  */
-fun ImageView.load(path: String?) {
+fun ImageView.load(path: String?, error: Drawable? = null) {
     val options: RequestOptions = RequestOptions()
         .skipMemoryCache(false)
         .dontAnimate()
         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+        .error(error)
+
     val crossFadeFactory = DrawableCrossFadeFactory.Builder()
         .setCrossFadeEnabled(true)
         .build()
+
     Glide.with(context)
         .load(path)
         .apply(options)

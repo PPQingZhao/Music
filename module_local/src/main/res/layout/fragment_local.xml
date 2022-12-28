@@ -5,20 +5,53 @@
 
     <data>
 
+        <variable
+            name="themeViewModel"
+            type="com.pp.library_ui.utils.AppTheme" />
+
+        <variable
+            name="viewModel"
+            type="com.pp.module_local.LocalViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_head"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_large"
+            android:errorDrawable="@{@drawable/ic_head}"
+            android:imageUrl="@{viewModel.headIcon}"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.15"
+            app:shapeAppearance="@style/StyleCircleImageView"
+            app:strokeColor="@color/gray"
+            app:strokeWidth="1dp"
+            tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:maxLines="1"
+            android:text="@{viewModel.nickName}"
+            android:textColor="@{themeViewModel.textColor}"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/iv_head"
+            app:layout_constraintTop_toTopOf="@id/iv_head"
+            tools:text="用户"
+            tools:textColor="?android:textColor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,16 +3,13 @@ package com.pp.library_ui.databinding
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.ColorStateListDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.StateListDrawable
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.StringRes
-import androidx.core.content.res.ComplexColorCompat
 import com.google.android.material.textfield.TextInputLayout
+import com.pp.library_ui.utils.load
 
 object BindingAdapter {
 
@@ -68,6 +65,15 @@ object BindingAdapter {
     @androidx.databinding.BindingAdapter("android:tint")
     fun setImageTint(iv: ImageView, color: ColorStateList) {
         iv.imageTintList = color
+    }
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter(
+        value = ["android:imageUrl", "android:errorDrawable"],
+        requireAll = true
+    )
+    fun setImageUrl(iv: ImageView, url: String?, error: Drawable) {
+        iv.load(url,error)
     }
 
 }
