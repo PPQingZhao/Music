@@ -100,7 +100,7 @@ object UserRepository {
     /**
      * 用户登出,清除preference缓存的用户信息
      */
-    suspend fun logoutWithPreferenceClear(userName: String?, password: String?) {
+    suspend fun logoutWithPreferenceClear() {
         withContext(Dispatchers.IO) {
             App.getInstance().baseContext.userDataStore.edit {
                 it[userNameKey] = ""

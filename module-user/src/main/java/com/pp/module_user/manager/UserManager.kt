@@ -21,7 +21,6 @@ object UserManager : IUserService {
     }
 
     suspend fun loginPreferenceUser() {
-        logoutWithPreferenceClear()
         val result = UserRepository.loginPreferenceUser()
         withContext(Dispatchers.Main) {
             processLoginResult(result)
@@ -54,7 +53,7 @@ object UserManager : IUserService {
         withContext(Dispatchers.Main) {
             userModel.user = null
         }
-        return UserRepository.logoutWithPreferenceClear(logoutUser?.name, logoutUser?.password)
+        return UserRepository.logoutWithPreferenceClear()
     }
 
     override fun getToken(): LiveData<String?> {
