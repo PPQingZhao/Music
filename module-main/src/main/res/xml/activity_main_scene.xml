@@ -26,7 +26,7 @@
         <Constraint
             android:id="@+id/guideline_start"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <Constraint
             android:id="@+id/guideline_end"
@@ -40,7 +40,7 @@
         <Constraint
             android:id="@+id/guideline_start"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <Constraint
             android:id="@+id/guideline_end"

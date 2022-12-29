@@ -41,7 +41,7 @@ open class App : Application() {
     override fun onCreate() {
         super.onCreate()
         // 数据库模块
-        dataBaseAppService.onCreate(this)
+        dataBaseAppService?.onCreate(this)
         // user
         userAppService.onCreate(this)
     }

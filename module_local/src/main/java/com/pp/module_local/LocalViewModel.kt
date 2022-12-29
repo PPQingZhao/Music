@@ -14,7 +14,7 @@ class LocalViewModel(app: Application) : ThemeViewModel(app) {
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
 
-        userService().apply {
+        userService()?.apply {
             getHeadIcon().observe(owner) {
                 headIcon.set(it)
             }
