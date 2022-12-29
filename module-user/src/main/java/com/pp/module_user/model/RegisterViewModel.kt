@@ -10,7 +10,7 @@ open class RegisterViewModel {
     val helperMessage = MutableLiveData<String>("")
     val username = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
-    val confirm_password = MutableLiveData<String>("")
+    val confirmPassword = MutableLiveData<String>("")
     val succeed = MutableLiveData<Boolean>()
 
     open fun onClick(view: View) {}

@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@={viewModel.confirm_password}"
+                android:text="@={viewModel.confirmPassword}"
                 android:textColor="@{themeViewModel.textColor}"
                 android:textSize="13sp" />
         </com.google.android.material.textfield.TextInputLayout>

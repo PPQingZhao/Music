@@ -20,12 +20,12 @@ class UserRegisterViewModel : RegisterViewModel(), DefaultLifecycleObserver {
             registerEnable.set(
                 !(username.value?.isEmpty() ?: true)
                         && !(password.value?.isEmpty() ?: true)
-                        && !(confirm_password.value?.isEmpty() ?: true)
+                        && !(confirmPassword.value?.isEmpty() ?: true)
             )
         }
         username.observe(owner, observer)
         password.observe(owner, observer)
-        confirm_password.observe(owner, observer)
+        confirmPassword.observe(owner, observer)
     }
 
     private val _registerResult = MutableSharedFlow<Boolean>()
@@ -36,7 +36,7 @@ class UserRegisterViewModel : RegisterViewModel(), DefaultLifecycleObserver {
         helperMessage.value = ""
         succeed.value = false
 
-        if (password != confirm_password) {
+        if (password.value != confirmPassword.value) {
             helperMessage.value = "请确认密码"
             return
         }
@@ -62,7 +62,7 @@ class UserRegisterViewModel : RegisterViewModel(), DefaultLifecycleObserver {
     fun reset() {
         username.value = ""
         password.value = ""
-        confirm_password.value = ""
+        confirmPassword.value = ""
         errorMessage.value = ""
         helperMessage.value = ""
     }
