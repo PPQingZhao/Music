@@ -1,85 +1,42 @@
 package com.pp.module_user.repositoy
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pp.library_database.user.User
-import com.pp.library_network.api.user.MusicService
-import com.pp.library_network.bean.ResponseBean
-import com.pp.library_network.bean.user.LoginBean
-import com.pp.library_network.bean.user.UserInfoBean
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.withContext
 
-class UserModel(private val user: User) {
-
-    private val isLogin = MutableLiveData<Boolean>()
-    private val loginBean = MutableLiveData<LoginBean>()
-    private val userInfoBean = MutableLiveData<UserInfoBean>()
+class UserModel {
 
     companion object {
-        private val TAG = "UserModel"
+        private const val TAG = "UserModel"
     }
 
-    fun userInfo(): LiveData<UserInfoBean> {
-        return userInfoBean
-    }
+    private val _userName = MutableLiveData<String?>()
+    val userName = _userName
 
-    fun isLogin(): LiveData<Boolean> {
-        return isLogin
-    }
+    private val _nickName = MutableLiveData<String?>()
+    val nickName = _nickName
 
-    fun getName(): String? {
-        return user.name
-    }
+    private val _password = MutableLiveData<String?>()
+    val password = _password
 
-    fun getPassword(): String? {
-        return user.password
-    }
+    private val _loginToken = MutableLiveData<String?>()
+    val loginToken = _loginToken
 
-    suspend fun login(): ResponseBean<LoginBean> {
-        Log.v(TAG, "start login: ${user.name}")
-        // 执行登录逻辑
-        val loginResponse = MusicService.userApi.loginByUserName(user.name, user.password)
+    private val _headIcon = MutableLiveData<String?>()
+    val headIcon = _headIcon
 
-        Log.v(TAG, "login code: ${loginResponse.code}")
-        if (loginResponse.code == MusicService.ErrorCode.SUCCESS) {
-            withContext(Dispatchers.Main) {
-                loginBean.value = loginResponse.data
-                MusicService.setToken(loginResponse.data.token)
-            }
+    private val _motto = MutableLiveData<String?>()
+    val motto = _motto
 
-            val userInfoResponse = MusicService.userApi.getUserInfo()
-            withContext(Dispatchers.Main) {
-                if (userInfoResponse.code == MusicService.ErrorCode.SUCCESS) {
-                    val infoBean = userInfoResponse.data
-                    userInfoBean.value = infoBean
-                    isLogin.value = infoBean.login.is_login == MusicService.LoginStatus.LOGIN
-                } else {
-                    userInfoBean.value = null
-                }
-            }
-        } else {
-            withContext(Dispatchers.Main) {
-                reset()
-            }
+    var user: User? = null
+        set(value) {
+            field = value
+            _userName.value = value?.name
+            _nickName.value = value?.nickName
+            _password.value = value?.password
+            _loginToken.value = value?.token
+            _headIcon.value = value?.avatar
+            motto.value = value?.motto
         }
-        return loginResponse
-    }
 
-    private fun reset() {
-        MusicService.setToken("")
-        isLogin.value = false
-        loginBean.value = null
-    }
-
-    suspend fun logout(): ResponseBean<String> {
-        Log.v(TAG, "start logout: ${user.name}")
-        withContext(Dispatchers.Main) {
-            reset()
-        }
-        return ResponseBean(0, "", "")
-    }
 
 }

@@ -50,25 +50,38 @@
             tools:ignore="UseAppTint"
             tools:tint="?android:textColor" />
 
-        <!--    <ViewSwitcher
-                android:id="@+id/view_switcher"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="4:5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_logo" />-->
-
-        <ViewSwitcher
-            android:id="@+id/view_switcher"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_large"
-            app:layout_constraintDimensionRatio="4:5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+            android:overScrollMode="never"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo">
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/motion_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutDescription="@xml/activity_login_and_register_scene">
+
+                <include
+                    android:id="@+id/view_register"
+                    layout="@layout/view_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:themeViewModel="@{themeViewModel}"
+                    app:viewModel="@{viewModel.registerViewModel}" />
+
+                <include
+                    android:id="@+id/view_login"
+                    layout="@layout/view_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:themeViewModel="@{themeViewModel}"
+                    app:viewModel="@{viewModel.loginViewModel}" />
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

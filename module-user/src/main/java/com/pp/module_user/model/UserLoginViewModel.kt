@@ -8,16 +8,14 @@ import com.pp.module_user.manager.UserManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
 
     override fun onCreate(owner: LifecycleOwner) {
-        username.value = UserManager.userModel().value?.getName()
-        password.value = UserManager.userModel().value?.getPassword()
+        username.value = UserManager.userModel().userName.value
+        password.value = UserManager.userModel().password.value
 
         val observer = { v: String? ->
             errorMessage.value = ""
@@ -39,10 +37,10 @@ class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
         succeed.value = false
         errorMessage.value = ""
         helperMessage.value = ""
-        ViewTreeLifecycleOwner.get(view)?.lifecycleScope?.launch {
+        ViewTreeLifecycleOwner.get(view)?.lifecycleScope?.launch(Dispatchers.IO) {
 
             try {
-                val response = UserManager.login(username.value, password.value)
+                val response = UserManager.loginWithPreferenceCache(username.value, password.value)
                 val result = response.code == MusicService.ErrorCode.SUCCESS
 
                 _loginResult.emit(result)
@@ -57,11 +55,11 @@ class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
         }
     }
 
-    private val _OnNewUser = MutableSharedFlow<Boolean>()
-    val onNewUser: SharedFlow<Boolean> = _OnNewUser
+    private val _onNewUser = MutableSharedFlow<Boolean>()
+    val onNewUser: SharedFlow<Boolean> = _onNewUser
     override fun onNewUser(view: View) {
         ViewTreeLifecycleOwner.get(view)?.lifecycleScope?.launch {
-            _OnNewUser.emit(true)
+            _onNewUser.emit(true)
         }
     }
 }

@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
             android:hint="@string/hint_username"
-            app:layout_constraintBottom_toTopOf="@id/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +41,7 @@
                 android:textSize="13sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password"
             style="@style/StyleTextInputLayout"
@@ -49,6 +49,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
             android:hint="@string/hint_password"
+            app:layout_constraintBottom_toTopOf="@id/confirm_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.8"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={viewModel.confirm_password}"
+                android:textColor="@{themeViewModel.textColor}"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_password"
+            style="@style/StyleTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:hint="@string/hint_confirm_password"
             app:boxStrokeErrorColor="@android:color/holo_red_dark"
             app:errorEnabled="@{!TextUtils.isEmpty(viewModel.errorMessage)}"
             app:errorMessage="@{viewModel.errorMessage}"
@@ -59,7 +84,7 @@
             app:layout_constraintBottom_toTopOf="@id/card_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/username"
+            app:layout_constraintTop_toBottomOf="@id/password"
             app:layout_constraintWidth_percent="0.8"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/gray">
@@ -75,17 +100,17 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_register"
-            enable="@{viewModel.enable}"
+            enable="@{viewModel.registerEnable}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
             android:onClick="@{viewModel::onClick}"
-            app:cardBackgroundColor="@{viewModel.enable ? themeViewModel.colorControlActivated : themeViewModel.colorButtonNormal}"
+            app:cardBackgroundColor="@{viewModel.registerEnable ? themeViewModel.colorControlActivated : themeViewModel.colorButtonNormal}"
             app:cardCornerRadius="5dp"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password"
+            app:layout_constraintTop_toBottomOf="@id/confirm_password"
             app:layout_constraintWidth_percent="0.8"
             tools:cardBackgroundColor="?android:colorButtonNormal">
 

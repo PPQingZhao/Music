@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
             android:hint="@string/hint_username"
-            app:layout_constraintBottom_toTopOf="@id/password"
+            app:layout_constraintBottom_toTopOf="@id/confirm_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password"
+            android:id="@+id/confirm_password"
             style="@style/StyleTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -54,8 +54,8 @@
             app:errorMessage="@{viewModel.errorMessage}"
             app:errorTextColor="@android:color/holo_red_dark"
             app:helperText="@{viewModel.helperMessage}"
-            app:helperTextEnabled="@{!TextUtils.isEmpty(viewModel.helperMessage)}"
             app:helperTextColor="@{viewModel.succeed ? @android:color/holo_green_dark:@android:color/holo_orange_light}"
+            app:helperTextEnabled="@{!TextUtils.isEmpty(viewModel.helperMessage)}"
             app:layout_constraintBottom_toTopOf="@id/card_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
             app:layout_constraintBottom_toTopOf="@id/new_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password"
+            app:layout_constraintTop_toBottomOf="@id/confirm_password"
             app:layout_constraintWidth_percent="0.8"
             tools:cardBackgroundColor="?android:colorButtonNormal">
 

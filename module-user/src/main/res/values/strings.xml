@@ -7,4 +7,6 @@
     <string name="register">注册</string>
     <string name="hint_username">输入账号</string>
     <string name="hint_password">输入密码</string>
+    <string name="hint_new_user">新用户</string>
+    <string name="hint_confirm_password">确认密码</string>
 </resources>

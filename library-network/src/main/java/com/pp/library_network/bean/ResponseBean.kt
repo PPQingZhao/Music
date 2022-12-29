@@ -6,6 +6,6 @@ import com.pp.library_network.utils.ObjectTypeAdapter
 data class ResponseBean<Data>(
     val code: Int,
     @JsonAdapter(ObjectTypeAdapter::class)
-    val `data`: Data,
+    val `data`: Data?,
     val msg: String,
 )

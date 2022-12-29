@@ -4,8 +4,10 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.animation.AlphaAnimation
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.TransitionAdapter
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -14,8 +16,6 @@ import com.pp.library_base.datastore.PreferenceTheme
 import com.pp.library_router_service.services.RouterPath
 import com.pp.module_user.R
 import com.pp.module_user.databinding.ActivityLoginAndRegisterBinding
-import com.pp.module_user.databinding.ViewLoginBindingImpl
-import com.pp.module_user.databinding.ViewRegisterBindingImpl
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -66,7 +66,10 @@ class LoginAndRegisterActivity :
         initLoginViewModel()
         initRegisterViewModel()
 
-        initSwitchView()
+        initMotionLayout()
+    }
+
+    private fun initMotionLayout() {
     }
 
     private fun initRegisterViewModel() {
@@ -80,7 +83,7 @@ class LoginAndRegisterActivity :
                     mViewModel.loginViewModel.password.value =
                         mViewModel.registerViewModel.password.value
                     // 显示登录ui
-                    mBinding.viewSwitcher.showNext()
+                    showLoginView()
                 }
             }
         }
@@ -89,7 +92,7 @@ class LoginAndRegisterActivity :
             // 注册页面点击返回按钮,隐藏注册ui,显示登录ui
             mViewModel.registerViewModel.onReturn.collect {
                 if (it) {
-                    mBinding.viewSwitcher.showNext()
+                    showLoginView()
                 }
             }
         }
@@ -108,56 +111,46 @@ class LoginAndRegisterActivity :
             mViewModel.loginViewModel.onNewUser.collect {
                 if (it) {
                     mViewModel.registerViewModel.reset()
-                    mBinding.viewSwitcher.showPrevious()
+                    showRegisterView()
                 }
             }
         }
     }
 
-    private fun initSwitchView() {
-        val viewLoginBinding = ViewLoginBindingImpl.inflate(
-            layoutInflater,
-            mBinding.viewSwitcher,
-            false
-        )
-
-        viewLoginBinding.lifecycleOwner = this
-        viewLoginBinding.themeViewModel = mThemeViewModel
-        viewLoginBinding.viewModel = mViewModel.loginViewModel
-
-        val viewRegisterBinding = ViewRegisterBindingImpl.inflate(
-            layoutInflater,
-            mBinding.viewSwitcher,
-            false
-        )
-
-        viewRegisterBinding.lifecycleOwner = this
-        viewRegisterBinding.themeViewModel = mThemeViewModel
-        viewRegisterBinding.viewModel = mViewModel.registerViewModel
-
-        mBinding.viewSwitcher.setFactory {
-            if (viewRegisterBinding.root.parent == null) {
-                viewRegisterBinding.root
-            } else {
-                viewLoginBinding.root
+    private fun showLoginView() {
+        mBinding.motionLayout.addTransitionListener(object : TransitionAdapter() {
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                mBinding.motionLayout.removeTransitionListener(this)
+                mBinding.viewRegister.root.visibility = View.GONE
             }
-        }
 
-        mBinding.viewSwitcher.inAnimation = inAlphaAnimation()
-        mBinding.viewSwitcher.outAnimation = outAlphaAnimation()
-        mBinding.viewSwitcher.showNext()
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+            ) {
+                mBinding.viewLogin.root.visibility = View.VISIBLE
+            }
+        })
+        mBinding.motionLayout.transitionToStart()
     }
 
-    private fun inAlphaAnimation(): AlphaAnimation {
-        val inAlphaAnimation = AlphaAnimation(0.3f, 1f)
-        inAlphaAnimation.duration = 500
-        return inAlphaAnimation
-    }
+    private fun showRegisterView() {
+        mBinding.motionLayout.addTransitionListener(object : TransitionAdapter() {
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                mBinding.motionLayout.removeTransitionListener(this)
+                mBinding.viewLogin.root.visibility = View.GONE
+            }
 
-    private fun outAlphaAnimation(): AlphaAnimation {
-        val outAlphaAnimation = AlphaAnimation(0f, 0f)
-        outAlphaAnimation.duration = 500
-        return outAlphaAnimation
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+            ) {
+                mBinding.viewRegister.root.visibility = View.VISIBLE
+            }
+        })
+        mBinding.motionLayout.transitionToEnd()
     }
 
 }
