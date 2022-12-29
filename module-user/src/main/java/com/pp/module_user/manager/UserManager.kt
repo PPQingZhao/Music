@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 
 object UserManager : IUserService {
 
+    private const val TAG = "UserManager"
     private val userModel = UserModel()
 
     fun userModel(): UserModel {
@@ -49,7 +50,6 @@ object UserManager : IUserService {
     }
 
     suspend fun logoutWithPreferenceClear() {
-        val logoutUser = userModel.user
         withContext(Dispatchers.Main) {
             userModel.user = null
         }

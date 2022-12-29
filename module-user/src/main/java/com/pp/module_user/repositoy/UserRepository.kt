@@ -18,7 +18,6 @@ import kotlinx.coroutines.withContext
 object UserRepository {
     private const val TAG = "UserRepository"
     private val userNameKey = stringPreferencesKey("user_name")
-    private val passwordKey = stringPreferencesKey("password")
 
     private val userApi by lazy { MusicService.userApi }
     private val userDao by lazy {
@@ -30,18 +29,18 @@ object UserRepository {
      */
     suspend fun loginPreferenceUser(): Pair<ResponseBean<LoginBean>, User?> {
         var userName: String?
-        var password: String?
         App.getInstance().baseContext.userDataStore.data.first().run {
             userName = get(userNameKey)
-            password = get(passwordKey)
-
         }
 
-        val loginPair = login(userName, password)
-        if (userName?.isNotEmpty() == true) {
-            return Pair(loginPair.first, User(name = userName, password = password))
+        val user = userDao.findUser(userName ?: "")
+        return try {
+            val login = login(user?.name, user?.password)
+            login
+
+        } catch (e: Throwable) {
+            Pair(ResponseBean(-1, null, e.message.toString()), user)
         }
-        return loginPair
     }
 
     /**
@@ -55,7 +54,6 @@ object UserRepository {
         result.second?.apply {
             App.getInstance().baseContext.userDataStore.edit {
                 it[userNameKey] = this.name.toString()
-                it[passwordKey] = this.password.toString()
             }
         }
         return result
@@ -104,7 +102,6 @@ object UserRepository {
         withContext(Dispatchers.IO) {
             App.getInstance().baseContext.userDataStore.edit {
                 it[userNameKey] = ""
-                it[passwordKey] = ""
             }
         }
     }

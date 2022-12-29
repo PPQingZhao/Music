@@ -50,7 +50,9 @@ class UserLoginViewModel : LoginViewModel(), DefaultLifecycleObserver {
                 }
             } catch (e: Throwable) {
                 Log.e("UserLoginViewModel", "${e.message}")
-                errorMessage.value = "发生错误"
+                withContext(Dispatchers.Main) {
+                    errorMessage.value = "发生错误"
+                }
             }
         }
     }

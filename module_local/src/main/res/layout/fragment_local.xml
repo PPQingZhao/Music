@@ -14,10 +14,11 @@
             type="com.pp.module_local.LocalViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        app:layoutDescription="@xml/fragment_local_scene">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_head"
@@ -39,6 +40,7 @@
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
+            android:id="@+id/tv_nick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
@@ -53,5 +55,5 @@
             tools:text="用户"
             tools:textColor="?android:textColor" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

@@ -25,7 +25,7 @@ interface UserDao {
     fun delete(user: User)
 
     @Query("SELECT * FROM User where name = :username")
-    fun findUser(username: String): User
+    fun findUser(username: String): User?
 
     /**
      * 表中有数据就返回第一条数据
@@ -33,6 +33,6 @@ interface UserDao {
      * @return
      */
     @Query("SELECT * FROM User")
-    fun findSingleUser(): User
+    fun findSingleUser(): User?
 
 }
