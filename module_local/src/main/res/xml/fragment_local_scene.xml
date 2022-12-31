@@ -46,6 +46,15 @@
                 app:attributeName="textSize"
                 app:customFloatValue="13" />
         </Constraint>
+
+        <Constraint
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight="0dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -94,6 +103,13 @@
                 app:customFloatValue="13" />
 
         </Constraint>
+
+        <Constraint
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover" />
     </ConstraintSet>
 
     <Transition
@@ -101,6 +117,7 @@
         app:constraintSetStart="@+id/start">
         <OnSwipe
             app:dragDirection="dragUp"
+            app:touchAnchorId="@id/recyclerview"
             app:nestedScrollFlags="supportScrollUp"
             app:touchAnchorSide="top" />
     </Transition>

@@ -20,7 +20,7 @@ abstract class ViewBindingItem<out Data : Any?> {
                 return this@ViewBindingItem.onCreateViewModel(binding, item,cacheItemViewModel)
             }
 
-            override fun createBinding(parent: ViewGroup, viewType: Int): ViewDataBinding {
+            override fun onCreateBinding(parent: ViewGroup, viewType: Int): ViewDataBinding {
                 return this@ViewBindingItem.onCreateViewDataBinding(parent)
             }
 

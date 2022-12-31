@@ -22,8 +22,8 @@ abstract class BindingPagingDataAdapter<VB : ViewDataBinding, VM : Any, T : Any>
                 )
             }
 
-            override fun createBinding(parent: ViewGroup, viewType: Int): VB {
-                return this@BindingPagingDataAdapter.createBinding(parent, viewType)
+            override fun onCreateBinding(parent: ViewGroup, viewType: Int): VB {
+                return this@BindingPagingDataAdapter.onCreateBinding(parent, viewType)
             }
 
             override fun onSetVariable(binding: VB, viewModel: VM?): Boolean {
@@ -43,7 +43,7 @@ abstract class BindingPagingDataAdapter<VB : ViewDataBinding, VM : Any, T : Any>
     }
 
     abstract fun createViewModel(binding: VB, item: T?, cacheItemViewModel: VM?): VM?
-    abstract fun createBinding(parent: ViewGroup, viewType: Int): VB
+    abstract fun onCreateBinding(parent: ViewGroup, viewType: Int): VB
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> {
         return BindingHolder<VB>(bindingHelper.createBinding(parent, viewType))

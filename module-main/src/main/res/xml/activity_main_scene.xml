@@ -6,14 +6,14 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@id/fl_user"
+            android:id="@id/fl_local"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.9" />
+            app:layout_constraintWidth_percent="0.8" />
         <Constraint
             android:id="@id/fl_main"
             android:layout_width="0dp"
@@ -26,12 +26,12 @@
         <Constraint
             android:id="@+id/guideline_start"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <Constraint
             android:id="@+id/guideline_end"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.8" />
 
     </ConstraintSet>
 
@@ -40,22 +40,22 @@
         <Constraint
             android:id="@+id/guideline_start"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <Constraint
             android:id="@+id/guideline_end"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.8" />
 
         <Constraint
-            android:id="@id/fl_user"
+            android:id="@id/fl_local"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline_end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.9" />
+            app:layout_constraintWidth_percent="0.8" />
 
         <Constraint
             android:id="@id/fl_main"

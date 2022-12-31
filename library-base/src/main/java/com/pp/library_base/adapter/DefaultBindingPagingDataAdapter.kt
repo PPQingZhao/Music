@@ -20,7 +20,7 @@ class DefaultBindingPagingDataAdapter<VB : ViewDataBinding, VM : Any, T : Any>(
         return onCreateViewModel.invoke(binding, item, cacheItemViewModel)
     }
 
-    override fun createBinding(parent: ViewGroup, viewType: Int): VB {
+    override fun onCreateBinding(parent: ViewGroup, viewType: Int): VB {
         return onCreateBinding.invoke(parent, viewType, LayoutInflater.from(parent.context))
     }
 

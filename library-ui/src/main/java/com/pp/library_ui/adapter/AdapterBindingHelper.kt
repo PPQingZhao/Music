@@ -44,11 +44,6 @@ abstract class AdapterBindingHelper<VB : ViewDataBinding, VM : Any, T : Any?> {
 
     fun onViewAttachedToWindow(holder: BindingHolder<VB>) {
 
-        val lifecycleOwner = ViewTreeLifecycleOwner.get(holder.binding.root)
-        holder.binding.lifecycleOwner = lifecycleOwner
-
-        val appTheme = ViewTreeAppThemeViewModel.get(holder.binding.root)
-        holder.binding.setVariable(BR.themeViewModel, appTheme)
     }
 
     /**
@@ -70,5 +65,17 @@ abstract class AdapterBindingHelper<VB : ViewDataBinding, VM : Any, T : Any?> {
     /**
      * 创建viewType类型的ViewDataBinding
      */
-    abstract fun createBinding(parent: ViewGroup, viewType: Int): VB
+    fun createBinding(parent: ViewGroup, viewType: Int): VB{
+        val binding = onCreateBinding(parent, viewType)
+
+        val appTheme = ViewTreeAppThemeViewModel.get(parent)
+        binding.setVariable(BR.themeViewModel, appTheme)
+
+        val lifecycleOwner = ViewTreeLifecycleOwner.get(parent)
+        binding.lifecycleOwner = lifecycleOwner
+
+        return binding
+    }
+
+    abstract fun onCreateBinding(parent: ViewGroup, viewType: Int): VB
 }

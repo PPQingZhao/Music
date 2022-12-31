@@ -72,5 +72,14 @@
             app:layout_constraintWidth_max="200dp"
             tools:text="用dfisjhfiusdifhisfhsdifhufdshjifdhsfhdsjfj户"
             tools:textColor="?android:textColor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:overScrollMode="never" />
+
+
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

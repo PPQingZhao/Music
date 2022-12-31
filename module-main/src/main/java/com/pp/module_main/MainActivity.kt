@@ -36,7 +36,7 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
         val mainFragment = MainFragment()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_user, localFragment)
+            .replace(R.id.fl_local, localFragment)
             .replace(R.id.fl_main, mainFragment)
             .commitNow()
     }

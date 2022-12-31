@@ -20,11 +20,15 @@ abstract class RecyclerViewBindingAdapter<VB : ViewDataBinding, VM : Any, T : An
     private val bindingHelper: AdapterBindingHelper<VB, VM, T> by lazy {
         object : AdapterBindingHelper<VB, VM, T>() {
             override fun createViewModel(binding: VB, item: T?, cacheItemViewModel: VM?): VM? {
-                return this@RecyclerViewBindingAdapter.createViewModel(binding, item, cacheItemViewModel)
+                return this@RecyclerViewBindingAdapter.createViewModel(
+                    binding,
+                    item,
+                    cacheItemViewModel
+                )
             }
 
-            override fun createBinding(parent: ViewGroup, viewType: Int): VB {
-                return this@RecyclerViewBindingAdapter.createBinding(parent, viewType)
+            override fun onCreateBinding(parent: ViewGroup, viewType: Int): VB {
+                return this@RecyclerViewBindingAdapter.onCreateBinding(parent, viewType)
             }
 
             override fun onSetVariable(binding: VB, viewModel: VM?): Boolean {
@@ -52,7 +56,7 @@ abstract class RecyclerViewBindingAdapter<VB : ViewDataBinding, VM : Any, T : An
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<VB> {
-        return BindingHolder<VB>(createBinding(parent, viewType))
+        return BindingHolder<VB>(bindingHelper.createBinding(parent, viewType))
     }
 
     override fun onViewAttachedToWindow(holder: BindingHolder<VB>) {
@@ -72,13 +76,13 @@ abstract class RecyclerViewBindingAdapter<VB : ViewDataBinding, VM : Any, T : An
     abstract fun createViewModel(
         binding: VB,
         item: T?,
-        cacheItemViewModel: VM?
+        cacheItemViewModel: VM?,
     ): VM?
 
     /**
      * 创建viewType类型的ViewDataBinding
      */
-    abstract fun createBinding(parent: ViewGroup, viewType: Int): VB
+    abstract fun onCreateBinding(parent: ViewGroup, viewType: Int): VB
 
 
 }

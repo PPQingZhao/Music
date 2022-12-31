@@ -50,7 +50,7 @@ dependencies {
     api(libs.glide)
     kapt(libs.glide.compiler)
 
-    implementation(projects.libraryTheme)
+    api(projects.libraryTheme)
     api(libs.exoplayer)
     api(libs.constraintlayout)
 

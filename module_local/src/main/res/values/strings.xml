@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">module_local</string>
+    <string name="liked">我喜欢</string>
+    <string name="recently_played">最近播放</string>
+    <string name="download">下载</string>
+    <string name="all_musics">全部歌曲</string>
+    <string name="theme">主题</string>
 </resources>

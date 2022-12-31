@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputLayout
 import com.pp.library_ui.utils.load
@@ -63,7 +64,7 @@ object BindingAdapter {
 
     @JvmStatic
     @androidx.databinding.BindingAdapter("android:tint")
-    fun setImageTint(iv: ImageView, color: ColorStateList) {
+    fun setImageTint(iv: ImageView, color: ColorStateList?) {
         iv.imageTintList = color
     }
 
@@ -73,7 +74,20 @@ object BindingAdapter {
         requireAll = true
     )
     fun setImageUrl(iv: ImageView, url: String?, error: Drawable) {
-        iv.load(url,error)
+        iv.load(url, error)
     }
 
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("android:src")
+    fun setImageSrc(iv: ImageView, @DrawableRes src: Int) {
+        iv.setImageResource(src)
+    }
+
+  /*  @JvmStatic
+    @androidx.databinding.BindingAdapter("android:textColor")
+    fun setTextColor(tv: TextView, color: ColorStateList?) {
+        color?.apply {
+            tv.setTextColor(this)
+        }
+    }*/
 }
