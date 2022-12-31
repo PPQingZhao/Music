@@ -1,4 +1,4 @@
-package com.pp.module_local
+package com.pp.module_local.ui
 
 import android.os.Bundle
 import android.view.ViewGroup
@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.pp.library_base.base.ThemeFragment
 import com.pp.library_router_service.services.RouterPath
 import com.pp.library_ui.adapter.RecyclerViewBindingAdapter
+import com.pp.module_local.R
 import com.pp.module_local.databinding.FragmentLocalBinding
 import com.pp.module_local.databinding.ItemArrowForwardBinding
 import com.pp.module_local.model.ItemLocalViewModel
@@ -57,23 +58,38 @@ class LocalFragment : ThemeFragment<FragmentLocalBinding, LocalViewModel>() {
         dataList.add(
             ItemLocalViewModel(
                 com.pp.library_theme.R.drawable.ic_all_musics,
-                R.string.all_musics
+                R.string.all_musics,
+                RouterPath.Local.activity_all_musics
             )
         )
         dataList.add(
             ItemLocalViewModel(
                 com.pp.library_theme.R.drawable.ic_download,
-                R.string.download
+                R.string.download,
+                RouterPath.Local.activity_download
             )
         )
         dataList.add(
             ItemLocalViewModel(
                 com.pp.library_theme.R.drawable.ic_recently_played,
-                R.string.recently_played
+                R.string.recently_played,
+                RouterPath.Local.activity_recently_played
             )
         )
-        dataList.add(ItemLocalViewModel(com.pp.library_theme.R.drawable.ic_liked, R.string.liked))
-        dataList.add(ItemLocalViewModel(com.pp.library_theme.R.drawable.ic_theme, R.string.theme))
+        dataList.add(
+            ItemLocalViewModel(
+                com.pp.library_theme.R.drawable.ic_liked,
+                R.string.liked,
+                RouterPath.Local.activity_liked
+            )
+        )
+        dataList.add(
+            ItemLocalViewModel(
+                com.pp.library_theme.R.drawable.ic_theme,
+                R.string.theme,
+                RouterPath.Local.activity_them_setting
+            )
+        )
         return dataList
     }
 

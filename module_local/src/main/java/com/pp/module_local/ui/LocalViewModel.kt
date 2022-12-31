@@ -1,4 +1,4 @@
-package com.pp.module_local
+package com.pp.module_local.ui
 
 import android.app.Application
 import androidx.databinding.ObservableField

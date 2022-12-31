@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <application>
+        <activity
+            android:name=".ui.ThemeSettingActivity"
+            android:configChanges="colorMode|orientation|keyboard|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.AllMusicsActivity"
+            android:configChanges="colorMode|orientation|keyboard|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.DownloadActivity"
+            android:configChanges="colorMode|orientation|keyboard|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.RecentlyPlayedActivity"
+            android:configChanges="colorMode|orientation|keyboard|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.LikedActivity"
+            android:configChanges="colorMode|orientation|keyboard|keyboardHidden"
+            android:screenOrientation="portrait" />
+    </application>
 
 </manifest>

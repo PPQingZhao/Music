@@ -12,7 +12,7 @@
 
         <fragment
             android:id="@+id/local"
-            android:name="com.pp.module_local.LocalFragment"
+            android:name="com.pp.module_local.ui.LocalFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

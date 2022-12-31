@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.pp.module_local.LocalViewModel" />
+            type="com.pp.module_local.ui.LocalViewModel" />
     </data>
 
 
