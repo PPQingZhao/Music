@@ -14,13 +14,10 @@ import com.pp.module_local.databinding.FragmentLocalBinding
 import com.pp.module_local.databinding.ItemArrowForwardBinding
 import com.pp.module_local.model.ItemLocalViewModel
 
-
 @Route(path = RouterPath.Local.fragment_local)
 class LocalFragment : ThemeFragment<FragmentLocalBinding, LocalViewModel>() {
     override val mBinding: FragmentLocalBinding by lazy {
-        FragmentLocalBinding.inflate(
-            layoutInflater
-        )
+        FragmentLocalBinding.inflate(layoutInflater)
     }
 
     override fun getModelClazz(): Class<LocalViewModel> {
@@ -90,6 +87,8 @@ class LocalFragment : ThemeFragment<FragmentLocalBinding, LocalViewModel>() {
                 RouterPath.Local.activity_them_setting
             )
         )
+
+
         return dataList
     }
 
@@ -104,6 +103,9 @@ class LocalFragment : ThemeFragment<FragmentLocalBinding, LocalViewModel>() {
 
     private fun initView() {
 
+        mBinding.appBarLayout.setOnApplyWindowInsetsListener { v, insets ->
+            mBinding.toolbar.dispatchApplyWindowInsets(insets)
+        }
         mBinding.ivHead.setOnClickListener {
             val transitionAnimation =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity())

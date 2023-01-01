@@ -59,13 +59,13 @@ abstract class LifecycleFragment<VB : ViewDataBinding, VM : LifecycleViewModel> 
         return mBinding.root
     }
 
-    private var alreadResume = false
+    private var alreadyResume = false
     override fun onResume() {
         super.onResume()
-        if (!alreadResume) {
+        if (!alreadyResume) {
             Log.e("TAG", "onFirstResume==> ${this}")
             onFirstResume()
-            alreadResume = true
+            alreadyResume = true
         }
     }
 
