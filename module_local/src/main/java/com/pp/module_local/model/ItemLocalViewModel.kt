@@ -1,13 +1,11 @@
 package com.pp.module_local.model
 
 import android.app.Activity
-import android.content.Intent
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityOptionsCompat
 import com.alibaba.android.arouter.launcher.ARouter
-import com.pp.library_router_service.services.RouterPath
 
 class ItemLocalViewModel : ItemArrowForwardViewModel {
     private val navigationPath: String
@@ -23,7 +21,6 @@ class ItemLocalViewModel : ItemArrowForwardViewModel {
 
         (v.context as Activity).apply {
 
-            RouterPath
             val transitionAnimation =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(this)
 
