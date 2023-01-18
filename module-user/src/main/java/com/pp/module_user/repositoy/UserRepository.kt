@@ -8,7 +8,7 @@ import com.pp.library_base.datastore.userDataStore
 import com.pp.library_common.app.App
 import com.pp.library_database.AppDataBase
 import com.pp.library_database.user.User
-import com.pp.library_network.api.user.MusicService
+import com.pp.library_network.api.MusicService
 import com.pp.library_network.bean.ResponseBean
 import com.pp.library_network.bean.user.LoginBean
 import kotlinx.coroutines.Dispatchers

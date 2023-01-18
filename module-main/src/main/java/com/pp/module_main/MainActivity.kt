@@ -20,6 +20,8 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
     }
 
     companion object {
+        private const val TAG_LOCAL = "LocalFragment"
+        private const val TAG_MIAN = "MainFragment"
         fun start(activity: Activity) {
             activity.startActivity(Intent(activity, MainActivity::class.java))
         }
@@ -31,14 +33,23 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
     }
 
     private fun initFragments() {
-        val localFragment =
-            ARouter.getInstance().build(RouterPath.Local.fragment_local).navigation() as Fragment
-        val mainFragment = MainFragment()
+        supportFragmentManager.apply {
+            var localFragment = findFragmentByTag(TAG_LOCAL)
+            if (null == localFragment) {
+                localFragment = ARouter.getInstance().build(RouterPath.Local.fragment_local)
+                    .navigation() as Fragment
+            }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_local, localFragment)
-            .replace(R.id.fl_main, mainFragment)
-            .commitNow()
+            var mainFragment = findFragmentByTag(TAG_MIAN)
+            if (null == mainFragment) {
+                mainFragment = MainFragment()
+            }
+
+            beginTransaction()
+                .replace(R.id.fl_local, localFragment, TAG_LOCAL)
+                .replace(R.id.fl_main, mainFragment, TAG_MIAN)
+                .commitNow()
+        }
     }
 
     override fun onStop() {

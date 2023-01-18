@@ -1,4 +1,4 @@
-package com.pp.library_network.api.user
+package com.pp.library_network.api
 
 import com.pp.library_network.utils.RetrofitUtil
 import com.pp.library_network.utils.addHeadersInterceptor

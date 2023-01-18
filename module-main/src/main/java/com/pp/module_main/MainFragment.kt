@@ -1,5 +1,6 @@
 package com.pp.module_main
 
+import android.os.Bundle
 import com.pp.library_base.base.ThemeFragment
 import com.pp.module_main.databinding.FragmentMainBinding
 
@@ -10,5 +11,9 @@ class MainFragment : ThemeFragment<FragmentMainBinding, MainViewModel>() {
 
     override fun getModelClazz(): Class<MainViewModel> {
         return MainViewModel::class.java
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 }
