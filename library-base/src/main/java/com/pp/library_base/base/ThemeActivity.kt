@@ -1,6 +1,7 @@
 package com.pp.library_base.base
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
@@ -23,7 +24,7 @@ import com.pp.mvvm.LifecycleActivity
 import kotlinx.coroutines.launch
 
 /**
- * theme fragment
+ * theme activity
  */
 abstract class ThemeActivity<VB : ViewDataBinding, VM : ThemeViewModel> :
     LifecycleActivity<VB, VM>() {

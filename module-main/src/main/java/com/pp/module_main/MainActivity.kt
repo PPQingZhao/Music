@@ -21,7 +21,7 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
 
     companion object {
         private const val TAG_LOCAL = "LocalFragment"
-        private const val TAG_MIAN = "MainFragment"
+        private const val TAG_MAIN = "MainFragment"
         fun start(activity: Activity) {
             activity.startActivity(Intent(activity, MainActivity::class.java))
         }
@@ -40,14 +40,14 @@ class MainActivity : ThemeActivity<ActivityMainBinding, ThemeViewModel>() {
                     .navigation() as Fragment
             }
 
-            var mainFragment = findFragmentByTag(TAG_MIAN)
+            var mainFragment = findFragmentByTag(TAG_MAIN)
             if (null == mainFragment) {
                 mainFragment = MainFragment()
             }
 
             beginTransaction()
                 .replace(R.id.fl_local, localFragment, TAG_LOCAL)
-                .replace(R.id.fl_main, mainFragment, TAG_MIAN)
+                .replace(R.id.fl_main, mainFragment, TAG_MAIN)
                 .commitNow()
         }
     }
